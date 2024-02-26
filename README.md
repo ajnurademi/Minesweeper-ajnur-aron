@@ -14,6 +14,8 @@ zeichnet sich unser Produkt durch seine herausragenden Leistungen und Unabhängi
 Tauchen Sie ein in die Welt von Minesweeper x3000 und erleben Sie Spielspass auf einem völlig neuen Niveau!
 
 ### Autoren:
-[Aron Herbel](https://github.com/aronherbel)
-[Ajnur Ademi](https://github.com/ajnurademi)
-[Sophia Cuarte](https://github.com/sophiacuarte)
+- [Aron Herbel](https://github.com/aronherbel)
+- [Ajnur Ademi](https://github.com/ajnurademi)
+- [Sophia Cuarte](https://github.com/sophiacuarte)
+
+
