@@ -1,7 +1,7 @@
 ## Minesweeper x3000 - Vertiefungsmodul 320 Projekt
 ---
 
-**Beschreibung:**
+### Beschreibung:
 Herzlich willkommen im Repository des Minesweeper x3000-Projekts, entwickelt im Rahmen des Vertiefungsmoduls 320. Dieses Projekt präsentiert eine innovative Interpretation des klassischen Minesweeper-Spiels. Durch eine ansprechende Konsolenapplikation bietet Minesweeper x3000 nicht nur die bekannten Spielspass-Elemente, sondern hebt das Spielerlebnis durch verschiedene Schwierigkeitsgrade und weitere Features auf ein neues Level.
 
 ### Produkt Vision:
