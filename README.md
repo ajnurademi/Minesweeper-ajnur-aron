@@ -22,4 +22,9 @@ Die User Stories bieten einen detaillierten Einblick in die Funktionalitäten un
 - [Ajnur Ademi](https://github.com/ajnurademi)
 - [Sophia Cuarte](https://github.com/sophiacuarte)
 
+### Klassendiagramm:
+[Unser Klassendiagramm](https://github.com/ajnurademi/Minesweeper-ajnur-aron-sophia/blob/main/Klassendiagramm%20-%20Minesweeper%20(ajnur%2Caron%20%26%20sophia).pdf)
+
+### Sequenzdiagramm:
+[Unser Sequenzdiagramm](https://github.com/ajnurademi/Minesweeper-ajnur-aron-sophia/blob/main/Sequenzdiagramm%20Minesweeper%20(ajnur%2C%20aron%20%26%20sophia).pdf)
 
