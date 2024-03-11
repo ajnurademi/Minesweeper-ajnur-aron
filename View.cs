@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Minesweeper
 {
-    public enum Difficulty
+    public class View
     {
-        Easy,
-        Mid, 
-        Hard
     }
 }
