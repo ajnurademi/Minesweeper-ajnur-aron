@@ -8,5 +8,6 @@ namespace Minesweeper.Logic
 {
     public class PlayMoveOriginator
     {
+
     }
 }

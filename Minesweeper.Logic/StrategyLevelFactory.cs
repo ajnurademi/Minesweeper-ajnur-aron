@@ -9,5 +9,10 @@ namespace Minesweeper.Logic
     public class StrategyLevelFactory
     {
 
+        public void StrategyLevelInput()
+        {
+
+        }
+
     }
 }
