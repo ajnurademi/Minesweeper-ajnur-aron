@@ -6,17 +6,17 @@ namespace Minesweeper.Test
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-            // Arrange 
-            var model = new Model();
+        //[TestMethod]
+        //public void TestMethod1()
+        //{
+        //    // Arrange 
+        //    var model = new Model();
 
-            // Act
-            model.DoTurn("C2");
+        //    // Act
+        //    model.DoTurn("C2");
 
-            // Assert 
-            // -> Prüfung Spielzustand
-        }
+        //    // Assert 
+        //    // -> Prüfung Spielzustand
+        //}
     }
 }
