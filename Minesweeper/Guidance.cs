@@ -8,5 +8,10 @@ namespace Minesweeper
 {
     public class Guidance
     {
+        public string GuidanceContent { get; set; }
+
+        public void PrintGuidance() {
+            Console.WriteLine(GuidanceContent);
+        }
     }
 }
