@@ -16,11 +16,11 @@ namespace Minesweeper.Logic
         public bool IsMine { get; set; }
         public bool IsFlagged { get; set; }
 
-        public void CountMinesAroundM()
+        public void CountMinesAroundMe()
         {
-            Console.WriteLine("Not Implemented");
+            Console.WriteLine("Not Implemented"); 
         }
-
+        
         
     }
 }

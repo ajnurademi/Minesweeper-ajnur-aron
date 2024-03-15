@@ -8,19 +8,20 @@ namespace Minesweeper.Logic
 {
     public class Board
     {
-        public Field[] GameBoard { get; set; }
+        public Field[][] GameBoard { get; set; }
         public int Xsize { get; set; }
         public int Ysize { get; set; }
         public int MinesCount { get; set; }
 
         public Board(IStrategyLevel strategy)
         {
-            Console.WriteLine("Not Implemented!")
+            Console.WriteLine("Not Implemented!");
         }
 
-        public Board GenerateMines()
+        public void GenerateMines()
         {
-            Console.WriteLine("Not Implemented!")
+            Console.WriteLine("Not Implemented!");
+            
         }
     }
 }

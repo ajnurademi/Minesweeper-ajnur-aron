@@ -12,23 +12,36 @@ namespace Minesweeper
         public bool Win { get; set; }
         public bool Lose { get; set; }
         public Guidance Guidance { get; set; } 
-        public Sound Sound { get; set; }
+        //public Sound Sound { get; set; }
         public View ViewGame { get; set; }
+
+        //private BoardCreator BoardCreator { get; set; }
         private Board GameBoard { get; set; }
+
+        public GameController()
+        {
+            this.ViewGame = new View();
+            //this.Sound = new Sound();
+            this.Guidance = new Guidance();
+            //this.BoardCreator = new BoardCreator();
+        }
 
         public void StartGame()
         {
-            Console.WriteLine("Not Implemented")
+            Console.Write("Bitte wählen Sie ein Level aus (E/M/D): ");
+            string userChoice = Console.ReadLine();
+            this.ViewGame.SelectDifficulty(userChoice);
+            
         }
 
         public void ResetGame()
         {
-            Console.WriteLine("Not Implemented")
+            Console.WriteLine("Not Implemented");
         }
 
         public void EndGame() 
-        { 
-            Console.WriteLine("Not Implemented")
+        {
+            Console.WriteLine("Not Implemented");
         }
     }
 }

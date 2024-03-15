@@ -6,7 +6,12 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
+            GameController controller = new GameController();
+            controller.Guidance.PrintGuidance();
+            controller.StartGame();
+
             
+
 
         }
     }
