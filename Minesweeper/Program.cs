@@ -1,4 +1,5 @@
-﻿using Minesweeper.Logic;
+﻿//using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Minesweeper
 {
@@ -6,13 +7,19 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
-            GameController controller = new GameController();
-            controller.Guidance.PrintGuidance();
-            controller.StartGame();
-
-            
+            while (true)
+            {
+                GameController controller = new GameController();
 
 
+                //Sound sound = new Sound();
+                //sound.PlayBackgroundSound();
+
+                controller.Guidance.PrintGuidance();
+                controller.StartGame();
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
     }
 }

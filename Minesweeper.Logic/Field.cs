@@ -18,7 +18,7 @@ namespace Minesweeper.Logic
 
         public void CountMinesAroundMe()
         {
-            Console.WriteLine("Not Implemented"); 
+            Console.WriteLine("Not Implemented");
         }
         
         

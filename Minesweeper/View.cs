@@ -10,25 +10,24 @@ namespace Minesweeper
     public class View
     {
        public BoardCreator BoardCreator { get; set; }
-       //public Difficulty Difficulty { get; set; }
+       // public Difficulty Difficulty { get; set; }
 
        public IStrategyLevel StrategyLevel { get; set; }     
 
        public StrategyLevelFactory StrategyLevelFactory { get; set; } 
+
+       private Board gameBoard { get; set; }
        
        public void PrintBoard(Board board)
         {
             Console.WriteLine("not Implemented" + board);
-        } 
-
-       public void SelectDifficulty(string option)
-        {
-            
-            var strategy = StrategyLevelFactory.StrategyLevelInput(option);
-
-
-            
         }
+
+        public void SelectDifficulty(string option)
+        {
+            BoardCreator.Strategy = StrategyLevelFactory.StrategyLevelInput(option);
+            this.gameBoard = BoardCreator.CreateBoard();
+        }  
 
         public void SelectUserInput(string input)
         {

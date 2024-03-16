@@ -18,6 +18,8 @@ namespace Minesweeper
         //private BoardCreator BoardCreator { get; set; }
         private Board GameBoard { get; set; }
 
+        public Sound Sound { get; set; }
+
         public GameController()
         {
             this.ViewGame = new View();
@@ -26,13 +28,34 @@ namespace Minesweeper
             //this.BoardCreator = new BoardCreator();
         }
 
+
+
+
+
         public void StartGame()
         {
+            //Thread soundThread = new Thread(() =>
+            //{
+            //    Sound.PlayBackgroundSound();
+            //});
+            //soundThread.Start();
+
             Console.Write("Bitte wählen Sie ein Level aus (E/M/D): ");
             string userChoice = Console.ReadLine();
             this.ViewGame.SelectDifficulty(userChoice);
+
             
+
+
+
+
         }
+
+
+
+
+
+
 
         public void ResetGame()
         {

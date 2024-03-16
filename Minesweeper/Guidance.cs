@@ -31,7 +31,7 @@ namespace Minesweeper
             Console.WriteLine("  - '@' ist eine Flagge, die eine mögliche Mine markiert.");
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Start/Ende:");
-            Console.WriteLine("  - 'S' Starte Minesweeper");
+            Console.WriteLine("  - 'S' Starte Minesweeper x3000 ");
             Console.WriteLine("  - 'E' Beende Minesweeper");
             Console.WriteLine("-----------------------------------------------------------------------");
         }
