@@ -8,16 +8,8 @@ namespace Minesweeper.Logic
 {
     public class LevelMedium : IStrategyLevel
     {
-        public int Xsize { get;}
-        public int Ysize { get;}
-        public int MinesCount { get;}
-
-        public LevelMedium()
-        {
-            Xsize = 16;
-            Ysize = 16;
-            MinesCount = 40;
-        }
-
+        public int Xsize { get; set; } = 10;
+        public int Ysize { get; set; } = 12;
+        public int MinesCount { get; set; } = 20;
     }
 }

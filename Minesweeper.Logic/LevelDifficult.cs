@@ -8,17 +8,8 @@ namespace Minesweeper.Logic
 {
     public class LevelDifficult : IStrategyLevel
     {
-        public int Xsize { get; }
-        public int Ysize { get; }
-        public int MinesCount { get; }
-
-
-        public LevelDifficult()
-        {
-            this.Xsize = 30;
-            this.Ysize = 16;
-            this.MinesCount = 99;
-        }
-
+        public int Xsize { get; set; } = 15;
+        public int Ysize { get; set; } = 15;
+        public int MinesCount { get; set; } = 20;
     }
 }

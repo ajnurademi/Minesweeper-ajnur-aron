@@ -12,7 +12,6 @@ namespace Minesweeper.Logic
         public int PosY { get; set; }
         public int CountMinesAround { get; set; }
         public bool IsRevealed { get; set; }
-
         public bool IsMine { get; set; }
         public bool IsFlagged { get; set; }
 
