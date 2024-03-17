@@ -20,7 +20,6 @@ namespace Minesweeper
         {
             this.ViewGame = new View();
             this.Guidance = new Guidance();
-
         }
 
         public void StartGame()
@@ -32,9 +31,9 @@ namespace Minesweeper
 
             this.gameBoard = this.ViewGame.BoardCreator.CreateBoard();
             this.gameBoard.PrintBoard(this.gameBoard);
-            this.ViewGame.GameBoard = this.gameBoard;
-            UserInteraction();
-            this.gameBoard.PrintBoard(this.gameBoard);
+            //this.ViewGame.GameBoard = this.gameBoard;
+            //UserInteraction();
+            //this.gameBoard.PrintBoard(this.gameBoard);
             this.gameBoard.GenerateMines();
 
             while (this.Win == false && this.Lose == false)
@@ -50,7 +49,6 @@ namespace Minesweeper
                     Console.WriteLine("Fehler beim Erstellen des Spielbretts.");
                 }
             }
-                
         }
 
         public void ResetGame()
@@ -81,6 +79,8 @@ namespace Minesweeper
             yCoordinateInt = yCoordinateInt - 1;
 
             this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
+
+            Console.Clear();
         }
     }
 }

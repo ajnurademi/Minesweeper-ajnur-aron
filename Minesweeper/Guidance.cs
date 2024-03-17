@@ -29,6 +29,7 @@ namespace Minesweeper
             Console.WriteLine("  - '■' repräsentiert eine bedeckte Zelle.");
             Console.WriteLine("  - 'M' ist eine Mine.");
             Console.WriteLine("  - '@' ist eine Flagge, die eine mögliche Mine markiert.");
+            Console.WriteLine("  - '*' ist eine Mine");
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Start/Ende:");
             Console.WriteLine("  - 'S' Starte Minesweeper x3000 ");

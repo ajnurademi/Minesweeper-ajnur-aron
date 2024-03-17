@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,115 @@ namespace Minesweeper.Logic
             this.Ysize = strategy.Ysize;
             this.MinesCount = strategy.MinesCount;
 
-            // Erstelle das Board
             CreateBoard();
+        }
+
+        public void Reveal(int posX, int posY)
+        {
+
+
+            GameBoardArray[posX, posY].IsRevealed = true;
+            GameBoardArray[posX, posY].CountMinesAround = CalcMinesAroundMe(posX, posY);
+
+            if(GameBoardArray[posX, posY].CountMinesAround == 0)
+            {
+                // top
+                if(GameBoardArray[posX, posY + 1] != null)
+                {
+                    GameBoardArray[posX, posY + 1].IsRevealed = true;
+
+                    //top-right
+                    if (GameBoardArray[posX + 1, posY + 1] != null)
+                    {
+                         GameBoardArray[posX + 1, posY + 1].IsRevealed = true;
+                    }
+
+                    //top-left
+                    if (GameBoardArray[posX - 1, posY + 1] != null)
+                    {
+                        GameBoardArray[posX - 1, posY + 1].IsRevealed = true;
+                    }
+                }
+
+                // bottom 
+                if (GameBoardArray[posX, posY - 1] != null)
+                {
+                    GameBoardArray[posX, posY - 1].IsRevealed = true;
+
+                    //bottom-left
+                    if (GameBoardArray[posX - 1, posY - 1] != null)
+                    {
+                        GameBoardArray[posX - 1, posY - 1].IsRevealed = true;
+                    }
+
+                    // bottom-right               
+                    if (GameBoardArray[posX + 1, posY - 1] != null)
+                    {
+                        GameBoardArray[posX + 1, posY - 1].IsRevealed = true;
+                    }
+                }
+
+                // left 
+                if (GameBoardArray[posX -1 , posY] != null)
+                {
+                    GameBoardArray[posX - 1, posY].IsRevealed= true; 
+                }
+
+                // right 
+                if (GameBoardArray[posX + 1, posY] != null)
+                {
+                    GameBoardArray[posX + 1, posY].IsRevealed = true; 
+                }
+            }
+        }
+
+        private int CalcMinesAroundMe(int posX, int posY)
+        {
+            GameBoardArray[posX, posY].CountMinesAround = 0;
+            int Count = GameBoardArray[posX, posY].CountMinesAround;
+
+            if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsMine) // top
+            {
+                Count++;
+            }
+             
+            if(GameBoardArray[posX + 1, posY] != null) // right
+            {
+                if(GameBoardArray[posX + 1, posY].IsMine) //right
+                {
+                    Count++;
+                }
+                if(GameBoardArray[posX + 1, posY + 1].IsMine) // top right
+                {
+                    Count++;
+                }
+                if (GameBoardArray[posX + 1, posY - 1].IsMine) //bottom right
+                {
+                    Count++;
+                }
+            }
+
+            if(GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsMine) //bottom
+            {
+                Count++;
+            }
+
+            if(GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsMine) //left
+            {
+                if(GameBoardArray[posX - 1, posY].IsMine) //left
+                {
+                    Count++;
+                }
+                if(GameBoardArray[posX - 1, posY + 1].IsMine) //top left
+                {
+                    Count++;
+                }
+                if (GameBoardArray[posX - 1, posY + 1].IsMine) //bottom left
+                {
+                    Count++;
+                }
+            }
+            return Count;
         }
 
         private void CreateBoard()
@@ -48,33 +156,21 @@ namespace Minesweeper.Logic
             Random random = new Random();
             int minesPlaced = 0;
 
-            for (int i = 0; i < Xsize; i++)
+            while (minesPlaced < MinesCount)
             {
-                for (int j = 0; j < Ysize; j++)
-                {
-                    if (!GameBoardArray[i, j].IsRevealed)
-                    {
-                        while (minesPlaced < MinesCount)
-                        {
-                            int x = random.Next(0, Xsize);
-                            int y = random.Next(0, Ysize);
+                int x = random.Next(0, Xsize);
+                int y = random.Next(0, Ysize);
 
-                            if (!GameBoardArray[x, y].IsMine && !GameBoardArray[x, y].IsRevealed)
-                            {
-                                GameBoardArray[x, y].IsMine = true;
-                                minesPlaced++;
-                            }
-                        }
-                    }
+                if (!GameBoardArray[x, y].IsMine && !GameBoardArray[x, y].IsRevealed)
+                {
+                    GameBoardArray[x, y].IsMine = true;
+                    minesPlaced++;
                 }
             }
         }
 
-
         public void PrintBoard(Board board)
         {
-            Console.Clear();
-
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {
@@ -98,10 +194,10 @@ namespace Minesweeper.Logic
                         }
                         else
                         {
-                            int minesAround = board.GameBoardArray[i, j].CountMinesAround;
+                            int minesAround = GameBoardArray[i, j].CountMinesAround;
                             string minesAroundString = minesAround.ToString();
                             Console.Write(minesAroundString);
-                            Console.Write(minesAround == 0 ? "0" : minesAroundString);
+                            Console.Write(minesAround == 0 ? "" : "");
                         }
                     }
                     else
@@ -113,7 +209,5 @@ namespace Minesweeper.Logic
                 Console.WriteLine();
             }
         }
-
     }
 }
-
