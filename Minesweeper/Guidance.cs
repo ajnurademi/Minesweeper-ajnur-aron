@@ -23,17 +23,14 @@ namespace Minesweeper
             Console.WriteLine(" - 'rm' Flagge entfernen");
             Console.WriteLine(" - 'o' Feld aufdecken");
             Console.WriteLine(" - 'u' Undo");
-            Console.WriteLine(" - 'q' Spiel beenden");
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Legende:");
             Console.WriteLine("  - '■' repräsentiert eine bedeckte Zelle.");
-            Console.WriteLine("  - 'M' ist eine Mine.");
-            Console.WriteLine("  - '@' ist eine Flagge, die eine mögliche Mine markiert.");
-            Console.WriteLine("  - '*' ist eine Mine");
+            Console.WriteLine("  - '*' ist eine Mine.");
+            Console.WriteLine("  - 'F' ist eine Flagge, die eine mögliche Mine markiert.");
             Console.WriteLine("-----------------------------------------------------------------------");
-            Console.WriteLine("Start/Ende:");
-            Console.WriteLine("  - 'S' Starte Minesweeper x3000 ");
-            Console.WriteLine("  - 'E' Beende Minesweeper");
+            Console.WriteLine("Ende:");
+            Console.WriteLine("  - 'Q' Beende Minesweeper");
             Console.WriteLine("-----------------------------------------------------------------------");
         }
 

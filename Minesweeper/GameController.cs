@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Minesweeper
@@ -24,8 +25,11 @@ namespace Minesweeper
 
         public void StartGame()
         {
-            Console.Write("Bitte wählen Sie ein Level aus (E = Easy / M = Medium / D = Difficult): ");
+            Console.Write("\n\n\nBitte wählen Sie ein Level aus (E = Easy / M = Medium / D = Difficult): ");
             string userChoiceDifficulty = Console.ReadLine();
+            Console.Write("\n\n\n");
+            Thread.Sleep(1000);
+
             userChoiceDifficulty = userChoiceDifficulty.ToUpper();
             this.ViewGame.SelectDifficulty(userChoiceDifficulty);
 
@@ -63,17 +67,17 @@ namespace Minesweeper
 
         private void UserInteraction()
         {
-            Console.WriteLine("Bitte geben Sie ein was sie machen möchten (z.B. o = Feld aufdecken) ");
+            Console.WriteLine("\n\nBitte geben Sie ein was sie machen möchten (z.B. o = Feld aufdecken) ");
             string userInput = Console.ReadLine();
             userInput = userInput.ToUpper();
             this.ViewGame.SelectUserInput(userInput);
 
-            Console.Write("Bitte geben Sie die X-Koordinate ein: ");
+            Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
             string xCoordinate = Console.ReadLine();
             int xCoordinateInt = int.Parse(xCoordinate);
             xCoordinateInt = xCoordinateInt - 1;
 
-            Console.Write("Bitte geben Sie die Y-Koordinate ein: ");
+            Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
             string yCoordinate = Console.ReadLine();
             int yCoordinateInt = int.Parse(yCoordinate);
             yCoordinateInt = yCoordinateInt - 1;

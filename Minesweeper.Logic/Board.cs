@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Minesweeper.Logic
 {
@@ -25,8 +26,6 @@ namespace Minesweeper.Logic
 
         public void Reveal(int posX, int posY)
         {
-
-
             GameBoardArray[posX, posY].IsRevealed = true;
             GameBoardArray[posX, posY].CountMinesAround = CalcMinesAroundMe(posX, posY);
 
@@ -77,7 +76,7 @@ namespace Minesweeper.Logic
                 // right 
                 if (GameBoardArray[posX + 1, posY] != null)
                 {
-                    GameBoardArray[posX + 1, posY].IsRevealed = true; 
+                    GameBoardArray[posX + 1, posY].IsRevealed = true;
                 }
             }
         }
@@ -171,6 +170,8 @@ namespace Minesweeper.Logic
 
         public void PrintBoard(Board board)
         {
+            Thread.Sleep(1000);
+
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {
@@ -195,14 +196,20 @@ namespace Minesweeper.Logic
                         else
                         {
                             int minesAround = GameBoardArray[i, j].CountMinesAround;
-                            string minesAroundString = minesAround.ToString();
+                            string minesAroundString = minesAround == 0 ? " " : minesAround.ToString();
                             Console.Write(minesAroundString);
-                            Console.Write(minesAround == 0 ? "" : "");
                         }
                     }
                     else
                     {
-                        Console.Write("■");
+                        if (GameBoardArray[i, j].IsFlagged)
+                        {
+                            Console.Write("F");
+                        }
+                        else
+                        {
+                            Console.Write("■");
+                        }
                     }
                     Console.Write(" |");
                 }

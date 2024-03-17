@@ -55,25 +55,23 @@ namespace Minesweeper
                 GameBoard.GameBoardArray[x, y].IsRevealed = true;
                 GameBoard.Reveal(x, y);
             }
-            else if (this.userInput == "F")
+            else if (this.userInput == "F" && GameBoard.GameBoardArray[x, y] != null)
             {
                 if (!GameBoard.GameBoardArray[x, y].IsFlagged && GameBoard.GameBoardArray[x, y] != null) 
                 {
                     GameBoard.GameBoardArray[x, y].IsFlagged = true;
-                    Console.WriteLine($"Flag placed at ({x + 1}, {y + 1})");
                 }
                 else
                 {
                     Console.WriteLine($"Flag already exists at ({x + 1}, {y + 1})");
                 }
             }
-            else if (this.userInput == "RM" && GameBoard.GameBoardArray[x, y] != null)
+            else if (this.userInput == "RM")
 
             {
                 if (GameBoard.GameBoardArray[x, y].IsFlagged)
                 {
                     GameBoard.GameBoardArray[x, y].IsFlagged = false;
-                    Console.WriteLine($"Flag removed from ({x + 1}, {y + 1})");
                 }
                 else
                 {
@@ -84,12 +82,12 @@ namespace Minesweeper
             {
                 Console.WriteLine("Oh this was a Wrong Input;");
 
-                Console.Write("Bitte geben Sie die X-Koordinate ein: ");
+                Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
                 string xCoordinate = Console.ReadLine();
                 int xCoordinateInt = int.Parse(xCoordinate);
                 xCoordinateInt = xCoordinateInt - 1;
 
-                Console.Write("Bitte geben Sie die Y-Koordinate ein: ");
+                Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
                 string yCoordinate = Console.ReadLine();
                 int yCoordinateInt = int.Parse(yCoordinate);
                 yCoordinateInt = yCoordinateInt - 1;
