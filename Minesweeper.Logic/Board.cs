@@ -35,7 +35,7 @@ namespace Minesweeper.Logic
             GameBoardArray[posX, posY].IsRevealed = true;
             GameBoardArray[posX, posY].CountMinesAround = CalcMinesAroundMe(posX, posY);
 
-            if(GameBoardArray[posX, posY].CountMinesAround == 0)
+            if(GameBoardArray[posX, posY].CountMinesAround == 0 )
             {
                 // top
                 if(GameBoardArray[posX, posY + 1] != null)

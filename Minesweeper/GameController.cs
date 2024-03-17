@@ -72,10 +72,34 @@ namespace Minesweeper
         /// <summary>
         /// Ends the game.
         /// </summary>
-        public void EndGame() 
+        public void EndGame()
         {
-            Console.WriteLine("Not Implemented");
+            int CountMineFlagged = 0;
+            
+            for (int i = 0; i < gameBoard.Xsize; i++)
+            {
+                for (int j = 0; j < gameBoard.Ysize; j++)
+                {
+                    Field currentField = gameBoard.GameBoardArray[i, j];
+                   
+                    if (currentField.IsMine && currentField.IsFlagged)
+                    {
+                        CountMineFlagged++;
+                        break;
+                    }
+                }
+            }
+
+            if (this.Win && CountMineFlagged == gameBoard.MinesCount)
+            {
+                Guidance.PrintWin();
+            }
+            else
+            {
+                Guidance.PrintLose(); 
+            }
         }
+
 
         /// <summary>
         /// Manages user interaction during the game.

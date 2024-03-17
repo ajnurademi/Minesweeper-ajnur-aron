@@ -79,5 +79,15 @@ namespace Minesweeper
             Console.Write("    |_|\\___/ \\__,_|     \\/  \\/ \\___/|_| |_| (_)\n");
             Console.Write("                                               \n");
         }
+
+        public void PrintLose()
+        {
+            Console.WriteLine("__     __           _               _   _ ");
+            Console.WriteLine(" \\ \\   / /          | |             | | | |");
+            Console.WriteLine("  \\ \\_/ /__  _   _  | |     ___  ___| |_| |");
+            Console.WriteLine("   \\   / _ \\| | | | | |    / _ \\/ __| __| |");
+            Console.WriteLine("    | | (_) | |_| | | |___| (_) \\__ \\ |_|_|");
+            Console.WriteLine("    |_|\\___/ \\__,_| |______\\___/|___/\\__(_)");
+        }
     }
 }
