@@ -13,7 +13,7 @@ namespace Minesweeper
         public bool Lose { get; set; }
         public Guidance Guidance { get; set; } 
         public View ViewGame { get; set; }
-        private Board GameBoard { get; set; }
+        private Board gameBoard { get; set; }
         public Sound Sound { get; set; }
 
         public GameController()
@@ -26,26 +26,17 @@ namespace Minesweeper
         public void StartGame()
         {
             Console.Write("Bitte wählen Sie ein Level aus (E/M/D): ");
-            string userChoice = Console.ReadLine();
-            this.ViewGame.SelectDifficulty(userChoice);
+            string userChoiceDifficulty = Console.ReadLine();
+            userChoiceDifficulty = userChoiceDifficulty.ToUpper();
+            this.ViewGame.SelectDifficulty(userChoiceDifficulty);
 
-            // Spielbrett abrufen und anzeigen
-            Board gameBoard = this.ViewGame.BoardCreator.CreateBoard();
+            this.gameBoard = this.ViewGame.BoardCreator.CreateBoard();
             if (gameBoard != null)
             {
-                gameBoard.PrintBoard();
-                // Benutzereingaben abfragen
-                Console.WriteLine("Bitte geben Sie ein was sie machen möchten ? (z.B. o = Feld aufdecken) ");
-                string userInput = Console.ReadLine();
-                this.ViewGame.SelectUserInput(userInput);
-
-                Console.WriteLine("Bitte geben Sie die X-Koordinate ein:");
-                string xCoordinate = Console.ReadLine();
-
-                Console.WriteLine("Bitte geben Sie die Y-Koordinate ein:");
-                string yCoordinate = Console.ReadLine();
-
-                this.ViewGame.SelectCoordinateXandY(xCoordinate, yCoordinate);
+                this.ViewGame.GameBoard = this.gameBoard;
+                gameBoard.PrintBoard(gameBoard);
+                
+                UserInteraction();
             }
             else
             {
@@ -61,6 +52,24 @@ namespace Minesweeper
         public void EndGame() 
         {
             Console.WriteLine("Not Implemented");
+        }
+
+        public void UserInteraction()
+        {
+            Console.WriteLine("Bitte geben Sie ein was sie machen möchten (z.B. o = Feld aufdecken) ");
+            string userInput = Console.ReadLine();
+            userInput = userInput.ToUpper();
+            this.ViewGame.SelectUserInput(userInput);
+
+            Console.Write("Bitte geben Sie die X-Koordinate ein: ");
+            string xCoordinate = Console.ReadLine();
+            int xCoordinateInt = int.Parse(xCoordinate);
+
+            Console.Write("Bitte geben Sie die Y-Koordinate ein: ");
+            string yCoordinate = Console.ReadLine();
+            int yCoordinateInt = int.Parse(yCoordinate);
+
+            this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
         }
     }
 }

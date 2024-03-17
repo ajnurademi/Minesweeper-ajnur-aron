@@ -8,7 +8,7 @@ namespace Minesweeper.Logic
 {
     public class Board
     {
-        public Field[,] GameBoard { get; set; }
+        public Field[,] GameBoardArray { get; set; }
         public int Xsize { get; set; }
         public int Ysize { get; set; }
         public int MinesCount { get; set; }
@@ -23,16 +23,14 @@ namespace Minesweeper.Logic
             CreateBoard();
         }
 
-        // Methode zum Erstellen des Boards
         private void CreateBoard()
         {
-            // Initialisiere das Spielbrett mit Feldern
-            GameBoard = new Field[Xsize, Ysize];
+            GameBoardArray = new Field[Xsize, Ysize];
             for (int i = 0; i < Xsize; i++)
             {
                 for (int j = 0; j < Ysize; j++)
                 {
-                    GameBoard[i, j] = new Field
+                    GameBoardArray[i, j] = new Field
                     {
                         PosX = i,
                         PosY = j,
@@ -45,7 +43,6 @@ namespace Minesweeper.Logic
             }
         }
 
-        // Methode zum Generieren von Minen
         public int GenerateMines()
         {
             Random random = new Random();
@@ -54,20 +51,18 @@ namespace Minesweeper.Logic
             {
                 int x = random.Next(0, Xsize);
                 int y = random.Next(0, Ysize);
-                if (!GameBoard[x, y].IsMine)
+                if (!GameBoardArray[x, y].IsMine)
                 {
-                    GameBoard[x, y].IsMine = true;
+                    GameBoardArray[x, y].IsMine = true;
                     minesPlaced++;
                 }
             }
             return minesPlaced;
         }
 
-        // Methode zum Drucken des Boards
-        public void PrintBoard()
+        public void PrintBoard(Board board)
         {
-            //int minesPlaced = gameBoard.GenerateMines();
-            //Console.WriteLine(minesPlaced);
+           
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {
@@ -83,12 +78,12 @@ namespace Minesweeper.Logic
                 for (int j = 0; j < Ysize; j++)
                 {
                     Console.Write(" ");
-                    if (GameBoard[i, j].IsRevealed)
+                    if (GameBoardArray[i, j].IsRevealed)
                     {
-                        if (GameBoard[i, j].IsMine)
+                        if (GameBoardArray[i, j].IsMine)
                             Console.Write("*");
                         else
-                            Console.Write(GameBoard[i, j].CountMinesAround == 0 ? " " : GameBoard[i, j].CountMinesAround.ToString());
+                            Console.Write(board.GameBoardArray[i, j].CountMinesAround == 0 ? " " : board.GameBoardArray[i, j].CountMinesAround.ToString());
                     }
                     else
                     {
