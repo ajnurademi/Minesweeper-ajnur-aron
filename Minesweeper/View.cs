@@ -33,7 +33,7 @@ namespace Minesweeper
             }
         }
 
-        public void SelectCoordinateXandY(int x, int y)
+        public void SelectCoordinateXandY(int y, int x)
         {
             if (x != null || y != null)
             {

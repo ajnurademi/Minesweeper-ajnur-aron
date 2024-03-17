@@ -26,7 +26,7 @@ namespace Minesweeper.Logic
                 return;
 
             CountMinesAround = CalcMinesAroundMe(gameBoard);
-            
+
             if (CountMinesAround == 0)
             {
                 for (int i = PosX - 1; i <= PosX + 1; i++)
@@ -38,18 +38,20 @@ namespace Minesweeper.Logic
                             if (i == PosX && j == PosY)
                                 continue;
 
-                            gameBoard[i, j].Reveal(gameBoard);
+                            gameBoard[i, j].Reveal(gameBoard); 
                         }
                     }
                 }
             }
         }
 
+
+
         private int CalcMinesAroundMe(Field[,] gameBoard)
         {
             int minesCount = 0;
 
-            if (IsMine == false)
+            if (!IsMine)
             {
                 for (int i = PosX - 1; i <= PosX + 1; i++)
                 {
@@ -66,11 +68,9 @@ namespace Minesweeper.Logic
                     }
                 }
             }
-            else
-            {
-                
-            }
+
             return minesCount;
         }
+
     }
 }

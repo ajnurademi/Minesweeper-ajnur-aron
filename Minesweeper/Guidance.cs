@@ -38,7 +38,7 @@ namespace Minesweeper
 
         public void StartScreen()
         {
-            
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("  __  __ _                                                   ");
             Console.WriteLine(" |  \\/  (_)                                                  ");
             Console.WriteLine(" | \\  / |_ _ __   ___  _____      _____  ___ _ __   ___ _ __ ");
@@ -51,14 +51,14 @@ namespace Minesweeper
             Console.WriteLine("  >  < ___) | |_| | |_| | |_| |                              ");
             Console.WriteLine(" /_/\\_\\____/ \\___/ \\___/ \\___/                               ");
             Console.WriteLine("                                                              ");
-            Console.WriteLine("                                                              ");
             Console.WriteLine();
             Console.WriteLine("    _    _                _     _                  _   ___           _    _      ");
             Console.WriteLine("   /_\\  (_)_ _ _  _ _ _  | |   /_\\  _ _ ___ _ _   | | / __| ___ _ __| |_ (_)__ _ ");
             Console.WriteLine("  / _ \\ | | ' \\ || | '_| | |  / _ \\| '_/ _ \\ ' \\  | | \\__ \\/ _ \\ '_ \\ ' \\| / _` |");
-            Console.WriteLine(" /_/ \\_\\|_|_||_\\__,_|_|   | | /_/ \\_\\_| \\___/_||_| |_| |___/\\___/ .__/|_|_\\__,_|");
+            Console.WriteLine(" /_/ \\_\\|_|_||_\\__,|_|   | | /_/ \\_\\_| \\___/_||_| |_| |___/\\___/ .__/|_|_\\__,_|");
             Console.WriteLine("      |__/               |_|                      |_|          |_|                ");
-            Console.WriteLine("Press any Key to continue 😉");
+            Console.ResetColor();
+            Console.WriteLine("Press any Key to continue 😊");
         }
 
         public void PrintWin()

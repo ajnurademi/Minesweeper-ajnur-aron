@@ -9,8 +9,8 @@ namespace Minesweeper
 {
     public class GameController
     {
-        public bool Win { get; set; }
-        public bool Lose { get; set; }
+        public bool Win { get; set; } = false;
+        public bool Lose { get; set; } = false;
         public Guidance Guidance { get; set; } 
         public View ViewGame { get; set; }
         private Board gameBoard { get; set; }
@@ -25,24 +25,32 @@ namespace Minesweeper
 
         public void StartGame()
         {
-            Console.Write("Bitte wählen Sie ein Level aus (E/M/D): ");
+            Console.Write("Bitte wählen Sie ein Level aus (E = Easy / M = Medium / D = Difficult): ");
             string userChoiceDifficulty = Console.ReadLine();
             userChoiceDifficulty = userChoiceDifficulty.ToUpper();
             this.ViewGame.SelectDifficulty(userChoiceDifficulty);
 
             this.gameBoard = this.ViewGame.BoardCreator.CreateBoard();
-            if (gameBoard != null)
+            this.gameBoard.PrintBoard(this.gameBoard);
+            this.ViewGame.GameBoard = this.gameBoard;
+            UserInteraction();
+            this.gameBoard.PrintBoard(this.gameBoard);
+            this.gameBoard.GenerateMines();
+
+            while (this.Win == false && this.Lose == false)
             {
-                this.ViewGame.GameBoard = this.gameBoard;
-                gameBoard.PrintBoard(gameBoard);
+                if (this.gameBoard != null)
+                {
+                    this.ViewGame.GameBoard = this.gameBoard;
+                    UserInteraction();
+                    this.gameBoard.PrintBoard(this.gameBoard);
+                }
+                else
+                {
+                    Console.WriteLine("Fehler beim Erstellen des Spielbretts.");
+                }
+            }
                 
-                UserInteraction();
-                gameBoard.PrintBoard(gameBoard);
-            }
-            else
-            {
-                Console.WriteLine("Fehler beim Erstellen des Spielbretts.");
-            }
         }
 
         public void ResetGame()
@@ -55,7 +63,7 @@ namespace Minesweeper
             Console.WriteLine("Not Implemented");
         }
 
-        public void UserInteraction()
+        private void UserInteraction()
         {
             Console.WriteLine("Bitte geben Sie ein was sie machen möchten (z.B. o = Feld aufdecken) ");
             string userInput = Console.ReadLine();
@@ -73,8 +81,6 @@ namespace Minesweeper
             yCoordinateInt = yCoordinateInt - 1;
 
             this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
-
-            //this.Guidance.PrintWin();
         }
     }
 }

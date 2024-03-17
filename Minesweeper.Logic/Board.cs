@@ -43,26 +43,38 @@ namespace Minesweeper.Logic
             }
         }
 
-        public int GenerateMines()
+        public void GenerateMines()
         {
             Random random = new Random();
             int minesPlaced = 0;
-            while (minesPlaced < MinesCount)
+
+            for (int i = 0; i < Xsize; i++)
             {
-                int x = random.Next(0, Xsize);
-                int y = random.Next(0, Ysize);
-                if (!GameBoardArray[x, y].IsMine)
+                for (int j = 0; j < Ysize; j++)
                 {
-                    GameBoardArray[x, y].IsMine = true;
-                    minesPlaced++;
+                    if (!GameBoardArray[i, j].IsRevealed)
+                    {
+                        while (minesPlaced < MinesCount)
+                        {
+                            int x = random.Next(0, Xsize);
+                            int y = random.Next(0, Ysize);
+
+                            if (!GameBoardArray[x, y].IsMine && !GameBoardArray[x, y].IsRevealed)
+                            {
+                                GameBoardArray[x, y].IsMine = true;
+                                minesPlaced++;
+                            }
+                        }
+                    }
                 }
             }
-            return minesPlaced;
         }
+
 
         public void PrintBoard(Board board)
         {
-           
+            Console.Clear();
+
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {
@@ -81,9 +93,16 @@ namespace Minesweeper.Logic
                     if (GameBoardArray[i, j].IsRevealed)
                     {
                         if (GameBoardArray[i, j].IsMine)
+                        {
                             Console.Write("*");
+                        }
                         else
-                            Console.Write(board.GameBoardArray[i, j].CountMinesAround == 0 ? " " : board.GameBoardArray[i, j].CountMinesAround.ToString());
+                        {
+                            int minesAround = board.GameBoardArray[i, j].CountMinesAround;
+                            string minesAroundString = minesAround.ToString();
+                            Console.Write(minesAroundString);
+                            Console.Write(minesAround == 0 ? "0" : minesAroundString);
+                        }
                     }
                     else
                     {
@@ -94,5 +113,7 @@ namespace Minesweeper.Logic
                 Console.WriteLine();
             }
         }
+
     }
 }
+
