@@ -11,28 +11,24 @@ namespace Minesweeper.Logic
 
         public IStrategyLevel StrategyLevelInput(string opt)
         {
-            
             if (opt != null)
             { 
 
                 if (opt == "E")
                 {
                     IStrategyLevel levelE = new LevelEasy();
-                    Console.WriteLine(levelE.Xsize);
                     return levelE;
                 }
                 if (opt == "M")
                 {
 
                     IStrategyLevel levelM = new LevelMedium();
-                    Console.WriteLine(levelM.Xsize); 
                     return levelM;
                 }
 
                 if (opt == "D")
                 {
                     IStrategyLevel levelD = new LevelDifficult();
-                    Console.WriteLine(levelD.Ysize);
                     return levelD;
                 }
                

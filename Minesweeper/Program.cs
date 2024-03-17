@@ -8,19 +8,11 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                GameController controller = new GameController();
+            
+            GameController controller = new GameController();
+            controller.Guidance.PrintGuidance();
+            controller.StartGame();
 
-
-                //Sound sound = new Sound();
-                //sound.PlayBackgroundSound();
-
-                controller.Guidance.PrintGuidance();
-                controller.StartGame();
-                Console.ReadKey();
-                Console.Clear();
-            }
 
             //// Beispielverwendung mit Easy-Level-Strategie
             //IStrategyLevel easyStrategy = new EasyLevelStrategy();
@@ -44,7 +36,6 @@ namespace Minesweeper
             //difficultBoard.GenerateMines();
             //Console.WriteLine("Difficult Board:");
             //difficultBoard.PrintBoard();
-
         }
     }
 }

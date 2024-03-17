@@ -20,7 +20,7 @@ namespace Minesweeper
             Console.WriteLine("-----------------------------------------------------------------------");
             Console.WriteLine("Spielmechanik");
             Console.WriteLine(" - 'f' Flagge setzen");
-            Console.WriteLine(" - 'r' Flagge entfernen");
+            Console.WriteLine(" - 'rm' Flagge entfernen");
             Console.WriteLine(" - 'o' Feld aufdecken");
             Console.WriteLine(" - 'u' Undo");
             Console.WriteLine(" - 'q' Spiel beenden");

@@ -12,50 +12,46 @@ namespace Minesweeper
         public bool Win { get; set; }
         public bool Lose { get; set; }
         public Guidance Guidance { get; set; } 
-        //public Sound Sound { get; set; }
         public View ViewGame { get; set; }
-
-        //private BoardCreator BoardCreator { get; set; }
         private Board GameBoard { get; set; }
-
         public Sound Sound { get; set; }
 
         public GameController()
         {
             this.ViewGame = new View();
-            //this.Sound = new Sound();
             this.Guidance = new Guidance();
-            //this.BoardCreator = new BoardCreator();
+
         }
-
-
-
-
 
         public void StartGame()
         {
-            //Thread soundThread = new Thread(() =>
-            //{
-            //    Sound.PlayBackgroundSound();
-            //});
-            //soundThread.Start();
-
             Console.Write("Bitte wählen Sie ein Level aus (E/M/D): ");
             string userChoice = Console.ReadLine();
             this.ViewGame.SelectDifficulty(userChoice);
 
-            
+            // Spielbrett abrufen und anzeigen
+            Board gameBoard = this.ViewGame.BoardCreator.CreateBoard();
+            if (gameBoard != null)
+            {
+                gameBoard.PrintBoard();
+                // Benutzereingaben abfragen
+                Console.WriteLine("Bitte geben Sie ein was sie machen möchten ? (z.B. o = Feld aufdecken) ");
+                string userInput = Console.ReadLine();
+                this.ViewGame.SelectUserInput(userInput);
 
+                Console.WriteLine("Bitte geben Sie die X-Koordinate ein:");
+                string xCoordinate = Console.ReadLine();
 
+                Console.WriteLine("Bitte geben Sie die Y-Koordinate ein:");
+                string yCoordinate = Console.ReadLine();
 
-
+                this.ViewGame.SelectCoordinateXandY(xCoordinate, yCoordinate);
+            }
+            else
+            {
+                Console.WriteLine("Fehler beim Erstellen des Spielbretts.");
+            }
         }
-
-
-
-
-
-
 
         public void ResetGame()
         {

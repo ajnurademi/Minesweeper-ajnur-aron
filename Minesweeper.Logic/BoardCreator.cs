@@ -11,8 +11,6 @@ namespace Minesweeper.Logic
     {
         public IStrategyLevel Strategy { get; set; }
 
-
-
         public Board CreateBoard()
         {
             if(this.Strategy != null)

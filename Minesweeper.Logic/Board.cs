@@ -46,7 +46,7 @@ namespace Minesweeper.Logic
         }
 
         // Methode zum Generieren von Minen
-        public void GenerateMines()
+        public int GenerateMines()
         {
             Random random = new Random();
             int minesPlaced = 0;
@@ -60,11 +60,14 @@ namespace Minesweeper.Logic
                     minesPlaced++;
                 }
             }
+            return minesPlaced;
         }
 
         // Methode zum Drucken des Boards
         public void PrintBoard()
         {
+            //int minesPlaced = gameBoard.GenerateMines();
+            //Console.WriteLine(minesPlaced);
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {
@@ -89,7 +92,7 @@ namespace Minesweeper.Logic
                     }
                     else
                     {
-                        Console.Write("?");
+                        Console.Write("■");
                     }
                     Console.Write(" |");
                 }
