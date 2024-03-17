@@ -37,6 +37,7 @@ namespace Minesweeper
                 gameBoard.PrintBoard(gameBoard);
                 
                 UserInteraction();
+                gameBoard.PrintBoard(gameBoard);
             }
             else
             {
@@ -64,12 +65,16 @@ namespace Minesweeper
             Console.Write("Bitte geben Sie die X-Koordinate ein: ");
             string xCoordinate = Console.ReadLine();
             int xCoordinateInt = int.Parse(xCoordinate);
+            xCoordinateInt = xCoordinateInt - 1;
 
             Console.Write("Bitte geben Sie die Y-Koordinate ein: ");
             string yCoordinate = Console.ReadLine();
             int yCoordinateInt = int.Parse(yCoordinate);
+            yCoordinateInt = yCoordinateInt - 1;
 
             this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
+
+            //this.Guidance.PrintWin();
         }
     }
 }

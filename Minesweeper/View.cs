@@ -53,18 +53,17 @@ namespace Minesweeper
             if (this.userInput == "O")
             {
                 GameBoard.GameBoardArray[x, y].IsRevealed = true;
-                Console.WriteLine("OOOOOOOOOOOOOOOO");
             }
             else if (this.userInput == "F")
             {
                 if (!GameBoard.GameBoardArray[x, y].IsFlagged)
                 {
                     GameBoard.GameBoardArray[x, y].IsFlagged = true;
-                    Console.WriteLine($"Flag placed at ({x}, {y})");
+                    Console.WriteLine($"Flag placed at ({x + 1}, {y + 1})");
                 }
                 else
                 {
-                    Console.WriteLine($"Flag already exists at ({x}, {y})");
+                    Console.WriteLine($"Flag already exists at ({x + 1}, {y + 1})");
                 }
             }
             else if (this.userInput == "RM")
@@ -72,11 +71,11 @@ namespace Minesweeper
                 if (GameBoard.GameBoardArray[x, y].IsFlagged)
                 {
                     GameBoard.GameBoardArray[x, y].IsFlagged = false;
-                    Console.WriteLine($"Flag removed from ({x}, {y})");
+                    Console.WriteLine($"Flag removed from ({x + 1}, {y + 1})");
                 }
                 else
                 {
-                    Console.WriteLine($"No flag to remove at ({x}, {y})");
+                    Console.WriteLine($"No flag to remove at ({x + 1}, {y + 1})");
                 }
             }
         }
