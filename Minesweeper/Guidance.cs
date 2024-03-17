@@ -10,6 +10,9 @@ namespace Minesweeper
     {
         public string GuidanceContent { get; set; }
 
+        /// <summary>
+        /// Prints the game guidance including level selection, game mechanics, legend, and end options.
+        /// </summary>
         public void PrintGuidance() {
             Console.WriteLine("Anleitung:");
             Console.WriteLine("-----------------------------------------------------------------------");
@@ -34,31 +37,38 @@ namespace Minesweeper
             Console.WriteLine("-----------------------------------------------------------------------");
         }
 
+        /// <summary>
+        /// Displays the start screen with the Minesweeper logo and prompts the user to continue.
+        /// </summary>
         public void StartScreen()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("  __  __ _                                                   ");
             Console.WriteLine(" |  \\/  (_)                                                  ");
-            Console.WriteLine(" | \\  / |_ _ __   ___  _____      _____  ___ _ __   ___ _ __ ");
-            Console.WriteLine(" | |\\/| | | '_ \\ / _ \\/ __\\ \\ /\\ / / _ \\/ _ \\ '_ \\ / _ \\ '__|");
-            Console.WriteLine(" | |  | | | | | |  __/\\__ \\ \\ V  V /  __/  __/ |_) |  __/ |   ");
-            Console.WriteLine(" |_|  |_|_|_| |_|\\___||___/ \\_/\\_/ \\___|\\___| .__/ \\___|_|   ");
-            Console.WriteLine("      |___ \\ / _ \\ / _ \\ / _ \\              | |              ");
-            Console.WriteLine(" __  __ __) | | | | | | | | | |             |_|              ");
+            Console.WriteLine(" | \\  / |_ _ __   ___  ____ __      __ __   __   ___ _ __  ___");
+            Console.WriteLine(" | |\\/| | | '_ \\ / _ \\/ __\\ \\ \\ /\\ / / _ \\/ _ \\ '_ \\ / _ \\ '__|");
+            Console.WriteLine(" | |  | | | | | |  __/\\__  \\ \\ V  V /  __/  __/ |_) |  __/ |   ");
+            Console.WriteLine(" |_|  |_|_|_| |_|\\___||___/   \\_/\\_/ \\___|\\___| .__/ \\___|_|   ");
+            Console.WriteLine("      |___ \\ / _ \\ / _ \\ / _ \\                | |              ");
+            Console.WriteLine(" __  __ __) | | | | | | | | | |               |_|              ");
             Console.WriteLine(" \\ \\/ /|__ <| | | | | | | | | |                              ");
             Console.WriteLine("  >  < ___) | |_| | |_| | |_| |                              ");
             Console.WriteLine(" /_/\\_\\____/ \\___/ \\___/ \\___/                               ");
             Console.WriteLine("                                                              ");
             Console.WriteLine();
-            Console.WriteLine("    _    _                _     _                  _   ___           _    _      ");
-            Console.WriteLine("   /_\\  (_)_ _ _  _ _ _  | |   /_\\  _ _ ___ _ _   | | / __| ___ _ __| |_ (_)__ _ ");
-            Console.WriteLine("  / _ \\ | | ' \\ || | '_| | |  / _ \\| '_/ _ \\ ' \\  | | \\__ \\/ _ \\ '_ \\ ' \\| / _` |");
-            Console.WriteLine(" /_/ \\_\\|_|_||_\\__,|_|   | | /_/ \\_\\_| \\___/_||_| |_| |___/\\___/ .__/|_|_\\__,_|");
-            Console.WriteLine("      |__/               |_|                      |_|          |_|                ");
+            Console.WriteLine("   _    _                _     _                  _   ___           _    _      ");
+            Console.WriteLine("  /_\\  (_)_ _ _  _ _ _  | |   /_\\  _ _ ___ _ _   | | / __| ___ _ __| |_ (_)__ _ ");
+            Console.WriteLine(" / _ \\ | | ' \\ || | '_| | |  / _ \\| '_/ _ \\ ' \\  | | \\__ \\/ _ \\ '_ \\ ' \\| / _` |");
+            Console.WriteLine("/_/ \\_\\| |_||_\\__,_|_|  | | /_/ \\_\\_| \\___/_||_| | | |___/\\___/ .__/_||_|_\\__,_|");
+            Console.WriteLine("     |__/               |_|                      |_|          |_|                ");
             Console.ResetColor();
-            Console.WriteLine("Press any Key to continue 😊");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nPress any Key to continue 😊");
+            Console.ResetColor();
         }
 
+        /// <summary>
+        /// Prints a message indicating that the player has won the game.
+        /// </summary>
         public void PrintWin()
         {
             Console.Write(" __     __          __          __           _ \n");
@@ -68,7 +78,6 @@ namespace Minesweeper
             Console.Write("    | | (_) | |_| |    \\  /\\  / (_) | | | | |_|\n");
             Console.Write("    |_|\\___/ \\__,_|     \\/  \\/ \\___/|_| |_| (_)\n");
             Console.Write("                                               \n");
-
         }
     }
 }

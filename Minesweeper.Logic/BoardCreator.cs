@@ -11,6 +11,10 @@ namespace Minesweeper.Logic
     {
         public IStrategyLevel Strategy { get; set; }
 
+        /// <summary>
+        /// Creates a new game board based on the selected strategy.
+        /// </summary>
+        /// <returns>A new Board object initialized with the selected strategy, or null if the strategy is not set.</returns>
         public Board CreateBoard()
         {
             if(this.Strategy != null)

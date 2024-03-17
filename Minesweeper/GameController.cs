@@ -17,17 +17,23 @@ namespace Minesweeper
         private Board gameBoard { get; set; }
         public Sound Sound { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the GameController class.
+        /// </summary>
         public GameController()
         {
             this.ViewGame = new View();
             this.Guidance = new Guidance();
         }
 
+        /// <summary>
+        /// Starts the game.
+        /// </summary>
         public void StartGame()
         {
-            Console.Write("\n\n\nBitte wählen Sie ein Level aus (E = Easy / M = Medium / D = Difficult): ");
+            Console.Write("\nChoose Level (E = Easy / M = Medium / D = Difficult): ");
             string userChoiceDifficulty = Console.ReadLine();
-            Console.Write("\n\n\n");
+            Console.Write("\n");
             Thread.Sleep(1000);
 
             userChoiceDifficulty = userChoiceDifficulty.ToUpper();
@@ -50,24 +56,33 @@ namespace Minesweeper
                 }
                 else
                 {
-                    Console.WriteLine("Fehler beim Erstellen des Spielbretts.");
+                    Console.WriteLine("Error by creating Gameboard");
                 }
             }
         }
 
+        /// <summary>
+        /// Resets the game.
+        /// </summary>
         public void ResetGame()
         {
             Console.WriteLine("Not Implemented");
         }
 
+        /// <summary>
+        /// Ends the game.
+        /// </summary>
         public void EndGame() 
         {
             Console.WriteLine("Not Implemented");
         }
 
+        /// <summary>
+        /// Manages user interaction during the game.
+        /// </summary>
         private void UserInteraction()
         {
-            Console.WriteLine("\n\nBitte geben Sie ein was sie machen möchten (z.B. o = Feld aufdecken) ");
+            Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
             string userInput = Console.ReadLine();
             userInput = userInput.ToUpper();
             this.ViewGame.SelectUserInput(userInput);

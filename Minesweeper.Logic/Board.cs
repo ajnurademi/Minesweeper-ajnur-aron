@@ -24,6 +24,12 @@ namespace Minesweeper.Logic
             CreateBoard();
         }
 
+        /// <summary>
+        /// Reveals the specified cell at the given position on the game board.
+        /// If the cell has no neighboring mines, adjacent cells are also revealed recursively.
+        /// </summary>
+        /// <param name="posX">The X-coordinate of the cell to reveal.</param>
+        /// <param name="posY">The Y-coordinate of the cell to reveal.</param>
         public void Reveal(int posX, int posY)
         {
             GameBoardArray[posX, posY].IsRevealed = true;
@@ -81,6 +87,12 @@ namespace Minesweeper.Logic
             }
         }
 
+        /// <summary>
+        /// Calculates the number of mines surrounding the specified cell at the given position.
+        /// </summary>
+        /// <param name="posX">The X-coordinate of the cell.</param>
+        /// <param name="posY">The Y-coordinate of the cell.</param>
+        /// <returns>The count of mines surrounding the specified cell.</returns>
         private int CalcMinesAroundMe(int posX, int posY)
         {
             GameBoardArray[posX, posY].CountMinesAround = 0;
@@ -93,15 +105,15 @@ namespace Minesweeper.Logic
              
             if(GameBoardArray[posX + 1, posY] != null) // right
             {
-                if(GameBoardArray[posX + 1, posY].IsMine) //right
+                if(GameBoardArray[posX + 1, posY].IsMine && GameBoardArray[posX + 1, posY] != null) //right
                 {
                     Count++;
                 }
-                if(GameBoardArray[posX + 1, posY + 1].IsMine) // top right
+                if(GameBoardArray[posX + 1, posY + 1].IsMine && GameBoardArray[posX + 1, posY + 1] != null) // top right
                 {
                     Count++;
                 }
-                if (GameBoardArray[posX + 1, posY - 1].IsMine) //bottom right
+                if (GameBoardArray[posX + 1, posY - 1].IsMine && GameBoardArray[posX + 1, posY - 1] != null) //bottom right
                 {
                     Count++;
                 }
@@ -114,15 +126,15 @@ namespace Minesweeper.Logic
 
             if(GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsMine) //left
             {
-                if(GameBoardArray[posX - 1, posY].IsMine) //left
+                if(GameBoardArray[posX - 1, posY].IsMine && GameBoardArray[posX - 1, posY] != null) //left
                 {
                     Count++;
                 }
-                if(GameBoardArray[posX - 1, posY + 1].IsMine) //top left
+                if(GameBoardArray[posX - 1, posY + 1].IsMine && GameBoardArray[posX - 1, posY + 1] != null) //top left
                 {
                     Count++;
                 }
-                if (GameBoardArray[posX - 1, posY + 1].IsMine) //bottom left
+                if (GameBoardArray[posX - 1, posY -1].IsMine && GameBoardArray[posX - 1, posY] != null) //bottom left
                 {
                     Count++;
                 }
@@ -130,6 +142,9 @@ namespace Minesweeper.Logic
             return Count;
         }
 
+        /// <summary>
+        /// Creates the game board by initializing each cell with its properties such as position, mine count, revealed status, mine presence, and flagged status.
+        /// </summary>
         private void CreateBoard()
         {
             GameBoardArray = new Field[Xsize, Ysize];
@@ -150,6 +165,9 @@ namespace Minesweeper.Logic
             }
         }
 
+        /// <summary>
+        /// Randomly generates mines on the game board until the specified number of mines is reached.
+        /// </summary>
         public void GenerateMines()
         {
             Random random = new Random();
@@ -168,10 +186,14 @@ namespace Minesweeper.Logic
             }
         }
 
+        /// <summary>
+        /// Prints the game board to the console, with a delay of 1000 milliseconds (1 second) before displaying.
+        /// </summary>
+        /// <param name="board">The game board to be printed.</param>
         public void PrintBoard(Board board)
         {
-            Thread.Sleep(1000);
-
+            Thread.Sleep(250);
+            Console.WriteLine();
             Console.Write("    ");
             for (int j = 0; j < Ysize; j++)
             {

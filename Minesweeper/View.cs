@@ -15,15 +15,26 @@ namespace Minesweeper
         private string userInput { get; set; }
         public Board GameBoard { get; set; }
 
+        private PlayMoveHistory moveHistory = new PlayMoveHistory();
+        
+        /// <summary>
+        /// Sets the game difficulty based on the selected option and creates the game board accordingly.
+        /// </summary>
+        /// <param name="option">The selected difficulty option.</param>
         public void SelectDifficulty(string option)
         {
             BoardCreator.Strategy = StrategyLevelFactory.StrategyLevelInput(option);
             this.GameBoard = BoardCreator.CreateBoard();
         }
 
+        /// <summary>
+        /// Sets the user input based on the provided input.
+        /// </summary>
+        /// <param name="input">The input string provided by the user.</param>
+        /// 
         public void SelectUserInput(string input)
         {
-            if (input != null || input == "F" || input == "RM" || input == "O" || input == "U" || input == "Q")
+            if (input == "F" || input == "RM" || input == "O" || input == "U" || input == "Q")
             {
                 this.userInput = input;
             }
@@ -33,6 +44,12 @@ namespace Minesweeper
             }
         }
 
+        /// <summary>
+        /// Selects the coordinates (X, Y) provided by the user and processes the choice.
+        /// </summary>
+        /// <param name="y">The Y-coordinate provided by the user.</param>
+        /// <param name="x">The X-coordinate provided by the user.</param>
+        /// 
         public void SelectCoordinateXandY(int y, int x)
         {
             if (x != null || y != null)
@@ -48,8 +65,15 @@ namespace Minesweeper
             }
         }
 
+        /// <summary>
+        /// Processes the user's choice for revealing, flagging, or removing flags on the game board based on the provided coordinates (X, Y).
+        /// If the user's input is invalid, prompts the user to enter valid coordinates.
+        /// </summary>
+        /// <param name="x">The X-coordinate of the user's choice.</param>
+        /// <param name="y">The Y-coordinate of the user's choice.</param>
         private void processUserChoice(int x, int y)
         {
+
             if (this.userInput == "O" && GameBoard.GameBoardArray[x, y] != null)
             {
                 GameBoard.GameBoardArray[x, y].IsRevealed = true;
@@ -78,16 +102,31 @@ namespace Minesweeper
                     Console.WriteLine($"No flag to remove at ({x + 1}, {y + 1})");
                 }
             }
+            else if (this.userInput == "U")
+            {
+                // Führe die Undo-Aktion aus und zeige das letzte Board vom Historienstapel an
+                Board previousBoard = moveHistory.Pop();
+                if (previousBoard != null)
+                {
+                    GameBoard = previousBoard;
+                    GameBoard.PrintBoard(GameBoard);
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("No more moves to undo.");
+                }
+            }
             else
             {
                 Console.WriteLine("Oh this was a Wrong Input;");
 
-                Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
+                Console.Write("\nPlease enter the X coordinate: ");
                 string xCoordinate = Console.ReadLine();
                 int xCoordinateInt = int.Parse(xCoordinate);
                 xCoordinateInt = xCoordinateInt - 1;
 
-                Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
+                Console.Write("\nPlease enter the Y coordinate: ");
                 string yCoordinate = Console.ReadLine();
                 int yCoordinateInt = int.Parse(yCoordinate);
                 yCoordinateInt = yCoordinateInt - 1;
