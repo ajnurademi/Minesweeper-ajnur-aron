@@ -50,7 +50,7 @@ namespace Minesweeper
         /// <param name="y">The Y-coordinate provided by the user.</param>
         /// <param name="x">The X-coordinate provided by the user.</param>
         /// 
-        public void SelectCoordinateXandY(int y, int x)
+        public void SelectCoordinateXandY(int x, int y)
         {
             if (x != null || y != null)
             {

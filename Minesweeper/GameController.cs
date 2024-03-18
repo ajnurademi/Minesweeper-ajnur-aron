@@ -108,11 +108,14 @@ namespace Minesweeper
         /// </summary>
         private void UserInteraction()
         {
+            //    while (true)
+            //    {
             Thread.Sleep(100);
-            Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
-            string userInput = Console.ReadLine();
-            userInput = userInput.ToUpper();
-            this.ViewGame.SelectUserInput(userInput);
+                Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
+                string userInput = Console.ReadLine();
+                userInput = userInput.ToUpper();
+                this.ViewGame.SelectUserInput(userInput);
+            //}
 
             Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
             string xCoordinate = Console.ReadLine();

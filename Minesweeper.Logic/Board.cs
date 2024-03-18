@@ -125,13 +125,12 @@ namespace Minesweeper.Logic
         /// <returns>The count of mines surrounding the specified cell.</returns>
         private int CalcMinesAroundMe(int posX, int posY)
         {
-
             GameBoardArray[posX, posY].CountMinesAround = 0;
             int Count = GameBoardArray[posX, posY].CountMinesAround;
 
             if(posY < Ysize -1)
             {
-                if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsMine) // top
+                if (GameBoardArray[posX, posY + 1].IsMine) // top
                 {
                     Count++;
                 }
@@ -139,33 +138,29 @@ namespace Minesweeper.Logic
                 
             if(posX < Xsize -1)
             {
-                if (GameBoardArray[posX + 1, posY] != null) // right
+                if (GameBoardArray[posX + 1, posY].IsMine) //right
                 {
-                    if (GameBoardArray[posX + 1, posY].IsMine && GameBoardArray[posX + 1, posY] != null) //right
+                    Count++;
+                }
+                if(posY < Ysize -1) {
+                    if (GameBoardArray[posX + 1, posY + 1].IsMine) // bottom right
                     {
                         Count++;
                     }
-                    if(posY < Ysize -1) {
-                        if (GameBoardArray[posX + 1, posY + 1].IsMine && GameBoardArray[posX + 1, posY + 1] != null) // bottom right
-                        {
-                            Count++;
-                        }
-                    }
-                    if(posY > 0)
+                }
+                if(posY > 0)
+                {
+                    if (GameBoardArray[posX + 1, posY - 1].IsMine) //top right
                     {
-                        if (GameBoardArray[posX + 1, posY - 1].IsMine && GameBoardArray[posX + 1, posY - 1] != null) //top right
-                        {
-                            Count++;
-                        }
+                        Count++;
                     }
-                   
                 }
             }
                 
             if(posY > 0)
             {
 
-                if (GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsMine) //top
+                if (GameBoardArray[posX, posY - 1].IsMine) //top
                 {
                     Count++;
                 }
@@ -173,28 +168,26 @@ namespace Minesweeper.Logic
 
             if (posX > 0)
             {
-                if (GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsMine) //left
-                {
-                    if (GameBoardArray[posX - 1, posY].IsMine && GameBoardArray[posX - 1, posY] != null) //left
+                    if (GameBoardArray[posX - 1, posY].IsMine) //left
                     {
                         Count++;
                     }
                     if(posY < Ysize - 1)
                     {
-                        if (GameBoardArray[posX - 1, posY + 1].IsMine && GameBoardArray[posX - 1, posY + 1] != null) //bottom left
+                        if (GameBoardArray[posX - 1, posY + 1].IsMine) //bottom left
                         {
                             Count++;
                         }
                     }
                     if(posY > 0)
                     {
-                        if (GameBoardArray[posX - 1, posY - 1].IsMine && GameBoardArray[posX - 1, posY] != null) //top left
+                        if (GameBoardArray[posX - 1, posY - 1].IsMine) //top left
                         {
                             Count++;
                         }
                     }
                     
-                }
+                
             }
             return Count;
         }
@@ -227,7 +220,7 @@ namespace Minesweeper.Logic
         /// </summary>
         public void GenerateMines()
         {
-            Random random = new Random();
+            Random random = new Random(); // 10 
             int minesPlaced = 0;
 
             while (minesPlaced < MinesCount)
@@ -267,40 +260,49 @@ namespace Minesweeper.Logic
 
             Console.WriteLine("  +" + new string('-', Ysize * 4));
 
-            for (int i = 0; i < Xsize; i++)
+            for (int j = 0; j < Ysize; j++)
             {
-                Console.Write(String.Format("{0:00} |", i + 1));
-                for (int j = 0; j < Ysize; j++)
+                Console.Write(String.Format("{0:00} |", j + 1));
+                for (int i = 0; i < Xsize; i++)
                 {
                     Console.Write(" ");
-                    if (GameBoardArray[i, j].IsRevealed)
+                    if (board.GameBoardArray[i, j].IsRevealed)
                     {
-                        if (GameBoardArray[i, j].IsMine)
+                        if (board.GameBoardArray[i, j].IsMine)
                         {
                             Console.Write("*");
                         }
                         else
                         {
-                            int minesAround = GameBoardArray[i, j].CountMinesAround;
+                            int minesAround = board.GameBoardArray[i, j].CountMinesAround;
                             string minesAroundString = minesAround == 0 ? " " : minesAround.ToString();
                             Console.Write(minesAroundString);
                         }
                     }
                     else
                     {
-                        if (GameBoardArray[i, j].IsFlagged)
+                        if (board.GameBoardArray[i, j].IsFlagged)
                         {
                             Console.Write("F");
                         }
                         else
                         {
-                            Console.Write("■");
+                            if (board.GameBoardArray[i, j].IsMine)
+                            {
+                                Console.Write("o");
+                            }
+                            else
+                            {
+                                Console.Write("■");
+                            }
                         }
                     }
                     Console.Write(" |");
                 }
                 Console.WriteLine();
+                Console.WriteLine("  +" + new string('-', Ysize * 4));
             }
+        
         }
     }
 }
