@@ -24,6 +24,46 @@ namespace Minesweeper.Logic
             CreateBoard();
         }
 
+        public PlayMoveHistory moveHistory = new PlayMoveHistory();
+
+        public void Save()
+        {
+            Field[,] clone = Clone();
+            moveHistory.Push(clone);    
+        }
+
+        public void Undo()
+        {
+            this.GameBoardArray = moveHistory.Pop();
+        }
+
+        // State
+        public Field[,] Clone()
+        {
+            Field[,] clone = new Field[Xsize, Ysize];
+
+            for (int i = 0; i < Xsize; i++)
+            {
+                for (int j = 0; j < Ysize; j++)
+                {
+                    GameBoardArray[i, j] = new Field
+                    {
+                        PosX = i,
+                        PosY = j,
+                        CountMinesAround = GameBoardArray[i,j].CountMinesAround,
+                        IsRevealed = GameBoardArray[i,j].IsRevealed,
+                        IsMine = GameBoardArray[i,j].IsMine,
+                        IsFlagged = GameBoardArray[i, j].IsFlagged
+                    };
+                }
+            }
+
+            return clone;
+        }
+
+
+
+
         /// <summary>
         /// Reveals the specified cell at the given position on the game board.
         /// If the cell has no neighboring mines, adjacent cells are also revealed recursively.

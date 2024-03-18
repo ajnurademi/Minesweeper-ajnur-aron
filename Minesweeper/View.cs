@@ -15,7 +15,7 @@ namespace Minesweeper
         private string userInput { get; set; }
         public Board GameBoard { get; set; }
 
-        private PlayMoveHistory moveHistory = new PlayMoveHistory();
+        
         
         /// <summary>
         /// Sets the game difficulty based on the selected option and creates the game board accordingly.
@@ -102,20 +102,9 @@ namespace Minesweeper
                     Console.WriteLine($"No flag to remove at ({x + 1}, {y + 1})");
                 }
             }
-            else if (this.userInput == "U")
+            else if (this.userInput == "u")
             {
-                // Führe die Undo-Aktion aus und zeige das letzte Board vom Historienstapel an
-                Board previousBoard = moveHistory.Pop();
-                if (previousBoard != null)
-                {
-                    GameBoard = previousBoard;
-                    GameBoard.PrintBoard(GameBoard);
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine("No more moves to undo.");
-                }
+                Console.WriteLine("not implemented");   
             }
             else
             {

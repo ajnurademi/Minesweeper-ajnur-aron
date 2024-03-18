@@ -8,19 +8,19 @@ namespace Minesweeper.Logic
 {
     public class PlayMoveHistory
     {
-        public Stack<Board> BoardStack { get; set; }
+        public Stack<Field[,]> BoardStack { get; set; }
 
         public PlayMoveHistory()
         {
-            BoardStack = new Stack<Board>();
+            BoardStack = new Stack<Field[,]>();
         }
 
-        public void Push(Board board)
+        public void Push(Field[,] clone)
         {
-            BoardStack.Push(board);
+            BoardStack.Push(clone);
         }
 
-        public Board Pop()
+        public Field[,] Pop()
         {
             if (BoardStack.Count > 0)
             {
