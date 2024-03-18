@@ -33,56 +33,86 @@ namespace Minesweeper.Logic
         public void Reveal(int posX, int posY)
         {
             GameBoardArray[posX, posY].IsRevealed = true;
-            GameBoardArray[posX, posY].CountMinesAround = CalcMinesAroundMe(posX, posY);
 
-            if(GameBoardArray[posX, posY].CountMinesAround == 0 )
+            if(GameBoardArray[posX, posY].CountMinesAround == 0)
             {
-                // top
-                if(GameBoardArray[posX, posY + 1] != null)
+                if(posY < Ysize - 1)
                 {
-                    GameBoardArray[posX, posY + 1].IsRevealed = true;
-
-                    //top-right
-                    if (GameBoardArray[posX + 1, posY + 1] != null)
+                        // bottom
+                    if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsRevealed == false) 
                     {
-                         GameBoardArray[posX + 1, posY + 1].IsRevealed = true;
-                    }
+                        GameBoardArray[posX, posY + 1].IsRevealed = true;
+                        Reveal(posX, posY + 1);
 
-                    //top-left
-                    if (GameBoardArray[posX - 1, posY + 1] != null)
-                    {
-                        GameBoardArray[posX - 1, posY + 1].IsRevealed = true;
-                    }
-                }
+                        if (posX < Xsize - 1)
+                        {
+                            //bottom-right
+                            if (GameBoardArray[posX + 1, posY + 1] != null && GameBoardArray[posX + 1, posY + 1].IsRevealed == false)
+                            {
+                                GameBoardArray[posX + 1, posY + 1].IsRevealed = true;
+                                Reveal(posX + 1, posY + 1);
+                            }
+                        }
 
-                // bottom 
-                if (GameBoardArray[posX, posY - 1] != null)
-                {
-                    GameBoardArray[posX, posY - 1].IsRevealed = true;
-
-                    //bottom-left
-                    if (GameBoardArray[posX - 1, posY - 1] != null)
-                    {
-                        GameBoardArray[posX - 1, posY - 1].IsRevealed = true;
-                    }
-
-                    // bottom-right               
-                    if (GameBoardArray[posX + 1, posY - 1] != null)
-                    {
-                        GameBoardArray[posX + 1, posY - 1].IsRevealed = true;
+                        if (posX > 0)
+                        {
+                            //bottom-left
+                            if (GameBoardArray[posX - 1, posY + 1] != null && GameBoardArray[posX - 1, posY + 1].IsRevealed == false)
+                            {
+                                GameBoardArray[posX - 1, posY + 1].IsRevealed = true;
+                                Reveal(posX - 1, posY + 1);
+                            }
+                        }
                     }
                 }
 
-                // left 
-                if (GameBoardArray[posX -1 , posY] != null)
+                if(posY > 0) 
                 {
-                    GameBoardArray[posX - 1, posY].IsRevealed= true; 
+                    // top 
+                    if (GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsRevealed == false)
+                    {
+                        GameBoardArray[posX, posY - 1].IsRevealed = true;
+                        Reveal(posX, posY - 1);
+
+                        if (posX > 0)
+                        {
+                            //top-left
+                            if (GameBoardArray[posX - 1, posY - 1] != null && GameBoardArray[posX - 1, posY - 1].IsRevealed == false)
+                            {
+                                GameBoardArray[posX - 1, posY - 1].IsRevealed = true;
+                                Reveal(posX - 1, posY - 1);
+                            }      
+                        }
+                        if (posX < Xsize - 1)
+                        {
+                            // top-right               
+                            if (GameBoardArray[posX + 1, posY - 1] != null && GameBoardArray[posX + 1, posY - 1].IsRevealed == false)
+                            {
+                                GameBoardArray[posX + 1, posY - 1].IsRevealed = true;
+                                Reveal(posX + 1, posY - 1);
+                            }
+                        }
+                    }
                 }
 
-                // right 
-                if (GameBoardArray[posX + 1, posY] != null)
+                if (posX > 0)
                 {
-                    GameBoardArray[posX + 1, posY].IsRevealed = true;
+                    // left 
+                    if (GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsRevealed == false)
+                    {
+                        GameBoardArray[posX - 1, posY].IsRevealed = true;
+                        Reveal(posX - 1, posY);
+                    }
+                }
+
+                // right
+                if(posX < Xsize -1)
+                {
+                    if (GameBoardArray[posX + 1, posY] != null && GameBoardArray[posX + 1, posY].IsRevealed == false)
+                    {
+                        GameBoardArray[posX + 1, posY].IsRevealed = true;
+                        Reveal(posX + 1, posY);
+                    }
                 }
             }
         }
@@ -95,48 +125,75 @@ namespace Minesweeper.Logic
         /// <returns>The count of mines surrounding the specified cell.</returns>
         private int CalcMinesAroundMe(int posX, int posY)
         {
+
             GameBoardArray[posX, posY].CountMinesAround = 0;
             int Count = GameBoardArray[posX, posY].CountMinesAround;
 
-            if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsMine) // top
+            if(posY < Ysize -1)
             {
-                Count++;
+                if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsMine) // top
+                {
+                    Count++;
+                }
             }
-             
-            if(GameBoardArray[posX + 1, posY] != null) // right
+                
+            if(posX < Xsize -1)
             {
-                if(GameBoardArray[posX + 1, posY].IsMine && GameBoardArray[posX + 1, posY] != null) //right
+                if (GameBoardArray[posX + 1, posY] != null) // right
                 {
-                    Count++;
+                    if (GameBoardArray[posX + 1, posY].IsMine && GameBoardArray[posX + 1, posY] != null) //right
+                    {
+                        Count++;
+                    }
+                    if(posY < Ysize -1) {
+                        if (GameBoardArray[posX + 1, posY + 1].IsMine && GameBoardArray[posX + 1, posY + 1] != null) // bottom right
+                        {
+                            Count++;
+                        }
+                    }
+                    if(posY > 0)
+                    {
+                        if (GameBoardArray[posX + 1, posY - 1].IsMine && GameBoardArray[posX + 1, posY - 1] != null) //top right
+                        {
+                            Count++;
+                        }
+                    }
+                   
                 }
-                if(GameBoardArray[posX + 1, posY + 1].IsMine && GameBoardArray[posX + 1, posY + 1] != null) // top right
-                {
-                    Count++;
-                }
-                if (GameBoardArray[posX + 1, posY - 1].IsMine && GameBoardArray[posX + 1, posY - 1] != null) //bottom right
+            }
+                
+            if(posY > 0)
+            {
+
+                if (GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsMine) //top
                 {
                     Count++;
                 }
             }
 
-            if(GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsMine) //bottom
+            if (posX > 0)
             {
-                Count++;
-            }
-
-            if(GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsMine) //left
-            {
-                if(GameBoardArray[posX - 1, posY].IsMine && GameBoardArray[posX - 1, posY] != null) //left
+                if (GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsMine) //left
                 {
-                    Count++;
-                }
-                if(GameBoardArray[posX - 1, posY + 1].IsMine && GameBoardArray[posX - 1, posY + 1] != null) //top left
-                {
-                    Count++;
-                }
-                if (GameBoardArray[posX - 1, posY -1].IsMine && GameBoardArray[posX - 1, posY] != null) //bottom left
-                {
-                    Count++;
+                    if (GameBoardArray[posX - 1, posY].IsMine && GameBoardArray[posX - 1, posY] != null) //left
+                    {
+                        Count++;
+                    }
+                    if(posY < Ysize - 1)
+                    {
+                        if (GameBoardArray[posX - 1, posY + 1].IsMine && GameBoardArray[posX - 1, posY + 1] != null) //bottom left
+                        {
+                            Count++;
+                        }
+                    }
+                    if(posY > 0)
+                    {
+                        if (GameBoardArray[posX - 1, posY - 1].IsMine && GameBoardArray[posX - 1, posY] != null) //top left
+                        {
+                            Count++;
+                        }
+                    }
+                    
                 }
             }
             return Count;
@@ -182,6 +239,13 @@ namespace Minesweeper.Logic
                 {
                     GameBoardArray[x, y].IsMine = true;
                     minesPlaced++;
+                }
+            }
+            for (int i = 0; i < Xsize; i++)
+            {
+                for (int j = 0; j < Ysize; j++) 
+                {
+                    this.GameBoardArray[i, j].CountMinesAround = CalcMinesAroundMe(i, j);  
                 }
             }
         }

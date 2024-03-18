@@ -31,6 +31,7 @@ namespace Minesweeper
         /// </summary>
         public void StartGame()
         {
+            Thread.Sleep(100);
             Console.Write("\nChoose Level (E = Easy / M = Medium / D = Difficult): ");
             string userChoiceDifficulty = Console.ReadLine();
             Console.Write("\n");
@@ -40,11 +41,8 @@ namespace Minesweeper
             this.ViewGame.SelectDifficulty(userChoiceDifficulty);
 
             this.gameBoard = this.ViewGame.BoardCreator.CreateBoard();
-            this.gameBoard.PrintBoard(this.gameBoard);
-            //this.ViewGame.GameBoard = this.gameBoard;
-            //UserInteraction();
-            //this.gameBoard.PrintBoard(this.gameBoard);
             this.gameBoard.GenerateMines();
+            this.gameBoard.PrintBoard(this.gameBoard);
 
             while (this.Win == false && this.Lose == false)
             {
@@ -58,6 +56,10 @@ namespace Minesweeper
                 {
                     Console.WriteLine("Error by creating Gameboard");
                 }
+            }
+            if (this.Win == true || this.Lose == true)
+            {
+                EndGame();
             }
         }
 
@@ -106,6 +108,7 @@ namespace Minesweeper
         /// </summary>
         private void UserInteraction()
         {
+            Thread.Sleep(100);
             Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
             string userInput = Console.ReadLine();
             userInput = userInput.ToUpper();

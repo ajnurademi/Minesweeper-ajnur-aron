@@ -42,6 +42,7 @@ namespace Minesweeper
         /// </summary>
         public void StartScreen()
         {
+            Thread.Sleep(100);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine(" |  \\/  (_)                                                  ");
             Console.WriteLine(" | \\  / |_ _ __   ___  ____ __      __ __   __   ___ _ __  ___");
