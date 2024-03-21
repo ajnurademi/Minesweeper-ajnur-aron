@@ -230,7 +230,53 @@ namespace Minesweeper.Logic
                 
             }
             return Count;
+
         }
+
+        private void DisplayCell(int posX, int posY)
+        {
+            int minesAround = CalcMinesAroundMe(posX, posY);
+
+            // Nur etwas ausgeben, wenn minesAround größer als 0 ist
+            if (minesAround > 0)
+            {
+                string element = minesAround.ToString();
+
+                switch (element)
+                {
+                    case "1":
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case "2":
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        break;
+                    case "3":
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case "4":
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        break;
+                    case "5":
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        break;
+                    case "6":
+                    case "7":
+                    case "8":
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        break;
+                    default:
+                        break;
+                }
+
+                Console.Write(element + "");
+                Console.ResetColor(); 
+            }
+            else
+            {
+                Console.Write(" ");
+            }
+        }
+
 
         /// <summary>
         /// Creates the game board by initializing each cell with its properties such as position, mine count, revealed status, mine presence, and flagged status.
@@ -292,22 +338,23 @@ namespace Minesweeper.Logic
             Thread.Sleep(250);
             Console.WriteLine();
             Console.Write("    ");
-            for (int j = 0; j < Ysize; j++)
+            for (int i = 0; i < board.Xsize; i++)
             {
-                Console.Write(String.Format(" {0:00} ", j + 1));
+                Console.Write(String.Format(" {0:00} ", i + 1));
             }
             Console.WriteLine();
 
-            Console.WriteLine("  +" + new string('-', Ysize * 4));
+            Console.WriteLine("  +" + new string('-', board.Xsize * 4));
 
-            for (int j = 0; j < Ysize; j++)
+            for (int j = 0; j < board.Ysize; j++)
             {
                 Console.Write(String.Format("{0:00} |", j + 1));
-                for (int i = 0; i < Xsize; i++)
+                for (int i = 0; i < board.Xsize; i++)
                 {
                     Console.Write(" ");
                     if (board.GameBoardArray[i, j].IsRevealed)
                     {
+                        DisplayCell(i, j);
                         if (board.GameBoardArray[i, j].IsMine)
                         {
                             Console.Write("*");
@@ -315,7 +362,7 @@ namespace Minesweeper.Logic
                         else
                         {
                             int minesAround = board.GameBoardArray[i, j].CountMinesAround;
-                            string minesAroundString = minesAround == 0 ? " " : minesAround.ToString();
+                            string minesAroundString = minesAround == 0 ? "" : minesAround.ToString();
                             Console.Write(minesAroundString);
                         }
                     }
@@ -340,9 +387,8 @@ namespace Minesweeper.Logic
                     Console.Write(" |");
                 }
                 Console.WriteLine();
-                Console.WriteLine("  +" + new string('-', Ysize * 4));
+                Console.WriteLine("  +" + new string('-', board.Xsize * 4));
             }
-        
         }
     }
 }
