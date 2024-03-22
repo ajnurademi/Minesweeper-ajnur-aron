@@ -76,83 +76,52 @@ namespace Minesweeper.Logic
 
             if(GameBoardArray[posX, posY].CountMinesAround == 0)
             {
-                if(posY < Ysize - 1)
+                // bottom
+                if (posY < Ysize - 1 && !GameBoardArray[posX, posY + 1].IsRevealed)
                 {
-                        // bottom
-                    if (GameBoardArray[posX, posY + 1] != null && GameBoardArray[posX, posY + 1].IsRevealed == false) 
-                    {
-                        GameBoardArray[posX, posY + 1].IsRevealed = true;
-                        Reveal(posX, posY + 1);
-
-                        if (posX < Xsize - 1)
-                        {
-                            //bottom-right
-                            if (GameBoardArray[posX + 1, posY + 1] != null && GameBoardArray[posX + 1, posY + 1].IsRevealed == false)
-                            {
-                                GameBoardArray[posX + 1, posY + 1].IsRevealed = true;
-                                Reveal(posX + 1, posY + 1);
-                            }
-                        }
-
-                        if (posX > 0)
-                        {
-                            //bottom-left
-                            if (GameBoardArray[posX - 1, posY + 1] != null && GameBoardArray[posX - 1, posY + 1].IsRevealed == false)
-                            {
-                                GameBoardArray[posX - 1, posY + 1].IsRevealed = true;
-                                Reveal(posX - 1, posY + 1);
-                            }
-                        }
-                    }
+                    Reveal(posX, posY + 1);
                 }
 
-                if(posY > 0) 
+                // top 
+                if (posY > 0 && !GameBoardArray[posX, posY - 1].IsRevealed)
                 {
-                    // top 
-                    if (GameBoardArray[posX, posY - 1] != null && GameBoardArray[posX, posY - 1].IsRevealed == false)
-                    {
-                        GameBoardArray[posX, posY - 1].IsRevealed = true;
-                        Reveal(posX, posY - 1);
-
-                        if (posX > 0)
-                        {
-                            //top-left
-                            if (GameBoardArray[posX - 1, posY - 1] != null && GameBoardArray[posX - 1, posY - 1].IsRevealed == false)
-                            {
-                                GameBoardArray[posX - 1, posY - 1].IsRevealed = true;
-                                Reveal(posX - 1, posY - 1);
-                            }      
-                        }
-                        if (posX < Xsize - 1)
-                        {
-                            // top-right               
-                            if (GameBoardArray[posX + 1, posY - 1] != null && GameBoardArray[posX + 1, posY - 1].IsRevealed == false)
-                            {
-                                GameBoardArray[posX + 1, posY - 1].IsRevealed = true;
-                                Reveal(posX + 1, posY - 1);
-                            }
-                        }
-                    }
+                    Reveal(posX, posY - 1);
                 }
 
-                if (posX > 0)
+                // left 
+                if (posX > 0 && !GameBoardArray[posX - 1, posY].IsRevealed)
                 {
-                    // left 
-                    if (GameBoardArray[posX - 1, posY] != null && GameBoardArray[posX - 1, posY].IsRevealed == false)
-                    {
-                        GameBoardArray[posX - 1, posY].IsRevealed = true;
-                        Reveal(posX - 1, posY);
-                    }
+                    Reveal(posX - 1, posY);
                 }
 
                 // right
-                if(posX < Xsize -1)
+                if(posX < Xsize -1 && !GameBoardArray[posX + 1, posY].IsRevealed)
                 {
-                    if (GameBoardArray[posX + 1, posY] != null && GameBoardArray[posX + 1, posY].IsRevealed == false)
-                    {
-                        GameBoardArray[posX + 1, posY].IsRevealed = true;
-                        Reveal(posX + 1, posY);
-                    }
+                    Reveal(posX + 1, posY);
+                }
+
+                // top-left
+                if (posX > 0 && posY > 0 && !GameBoardArray[posX - 1, posY - 1].IsRevealed)
+                {
+                    Reveal(posX - 1, posY - 1);
+                }
+
+                // top-right
+                if (posX < Xsize - 1 && posY > 0 && !GameBoardArray[posX + 1, posY - 1].IsRevealed)
+                {
+                    Reveal(posX + 1, posY - 1);
+                }
+
+                // bottom-left
+                if (posX > 0 && posY < Ysize - 1 && !GameBoardArray[posX - 1, posY + 1].IsRevealed)
+                {
+                    Reveal(posX - 1, posY + 1);
+                }
+
+                // bottom-right
+                if (posX < Xsize - 1 && posY < Ysize - 1 && !GameBoardArray[posX + 1, posY + 1].IsRevealed)
+                {
+                    Reveal(posX + 1, posY + 1);
                 }
             }
         }
@@ -289,7 +258,7 @@ namespace Minesweeper.Logic
         /// <param name="board">The game board to be printed.</param>
         public void PrintBoard(Board board)
         {
-            Thread.Sleep(250);
+            Thread.Sleep(750);
             Console.WriteLine();
             Console.Write("    ");
             for (int i = 0; i < board.Xsize; i++)
