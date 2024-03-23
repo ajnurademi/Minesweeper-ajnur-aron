@@ -32,8 +32,9 @@ namespace Minesweeper
             Console.WriteLine("  - '*' ist eine Mine.");
             Console.WriteLine("  - 'F' ist eine Flagge, die eine mögliche Mine markiert.");
             Console.WriteLine("-----------------------------------------------------------------------");
-            Console.WriteLine("Ende:");
+            Console.WriteLine("Ende/Reset:");
             Console.WriteLine("  - 'Q' Beende Minesweeper");
+            Console.WriteLine("  - 'R' Reset Minesweeper");
             Console.WriteLine("-----------------------------------------------------------------------");
         }
 
@@ -86,6 +87,9 @@ namespace Minesweeper
             
         }
 
+        /// <summary>
+        /// Prints a message indicating that the player has lost the game.
+        /// </summary>
         public void PrintLose()
         {
             Console.Clear();

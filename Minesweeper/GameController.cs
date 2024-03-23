@@ -69,7 +69,8 @@ namespace Minesweeper
         /// </summary>
         public void ResetGame()
         {
-            Console.WriteLine("Not Implemented");
+            Console.Clear();
+            StartGame();
         }
 
         /// <summary>
@@ -118,6 +119,11 @@ namespace Minesweeper
                 Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
                 this.userInput = Console.ReadLine();
                 this.userInput = this.userInput.ToUpper();
+                if (this.userInput == "R")
+                {
+                    ResetGame();
+                    break;
+                }
                 if (this.userInput == "U")
                 {
                     this.ViewGame.SelectUserInput(this.userInput);
@@ -127,7 +133,6 @@ namespace Minesweeper
                 {
                     this.ViewGame.SelectUserInput(userInput);
                     break;
-
                 }
                 else
                 {
@@ -182,7 +187,6 @@ namespace Minesweeper
                         Console.WriteLine("This number is not shown on the board. Please enter another Coordinate.");
                     }
                 }
-
                 this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
             }
             EndGame();

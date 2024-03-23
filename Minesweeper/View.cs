@@ -44,7 +44,6 @@ namespace Minesweeper
                     GameBoard.PrintBoard(GameBoard);
                     Console.WriteLine("You went back one step");
                 }
-                
             }
             else
             {
@@ -108,6 +107,7 @@ namespace Minesweeper
                     Console.WriteLine($"No flag to remove at ({x + 1}, {y + 1})");
                 }
             }
+            
             else
             {
                 Console.WriteLine("Oh this was a Wrong Input;");

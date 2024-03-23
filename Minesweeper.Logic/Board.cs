@@ -26,12 +26,18 @@ namespace Minesweeper.Logic
 
         public PlayMoveHistory moveHistory = new PlayMoveHistory();
 
+        /// <summary>
+        /// Saves the current state of the game board to the move history.
+        /// </summary>
         public void Save()
         {
             Field[,] clone = Clone();
             moveHistory.Push(clone);    
         }
 
+        /// <summary>
+        /// Undoes the last move by retrieving the previous state of the game board from the move history.
+        /// </summary>
         public Field[,] Undo()
         {
             return moveHistory.Pop();
@@ -39,6 +45,9 @@ namespace Minesweeper.Logic
         }
 
         // State
+        /// <summary>
+        /// Clones the current state of the game board.
+        /// </summary>
         public Field[,] Clone()
         {
             Field[,] clone = new Field[Xsize, Ysize];
@@ -318,7 +327,9 @@ namespace Minesweeper.Logic
             }
         }
 
-
+        /// <summary>
+        /// Makes the Count of how many mines are around a Field colorful.
+        /// </summary>
         private void DisplayCell(int posX, int posY)
         {
             int minesAround = CalcMinesAroundMe(posX, posY);
