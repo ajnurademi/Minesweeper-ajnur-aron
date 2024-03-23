@@ -100,8 +100,11 @@ namespace Minesweeper
             Console.WriteLine("   \\   / _ \\| | | | | |    / _ \\/ __| __| |");
             Console.WriteLine("    | | (_) | |_| | | |___| (_) \\__ \\ |_|_|");
             Console.WriteLine("    |_|\\___/ \\__,_| |______\\___/|___/\\__(_)");
+            Console.WriteLine();
+            Console.WriteLine("Wait until the sound has finished playing!!!");
             Sound.PlayLoseSound();
             Console.ResetColor();
+            
         }
     }
 }

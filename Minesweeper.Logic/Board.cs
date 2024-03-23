@@ -29,8 +29,6 @@ namespace Minesweeper.Logic
             CreateBoard();
         }
 
-        
-
         /// <summary>
         /// Saves the current state of the game board to the move history.
         /// </summary>
@@ -46,7 +44,6 @@ namespace Minesweeper.Logic
         public Field[,] Undo()
         {
             return moveHistory.Pop();
-
         }
 
         // State
@@ -75,9 +72,6 @@ namespace Minesweeper.Logic
 
             return clone;
         }
-
-
-
 
         /// <summary>
         /// Reveals the specified cell at the given position on the game board.
@@ -338,9 +332,6 @@ namespace Minesweeper.Logic
             }
         }
 
-
-       
-
         /// <summary>
         /// Makes the Count of how many mines are around a Field colorful.
         /// </summary>
@@ -387,6 +378,5 @@ namespace Minesweeper.Logic
                 Console.Write(" ");
             }
         }
-
     }
 }

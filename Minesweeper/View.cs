@@ -39,7 +39,6 @@ namespace Minesweeper
 
                 if(this.userInput == "U")
                 {
-
                     this.GameBoard.GameBoardArray = this.GameBoard.Undo();
 
                     GameBoard.PrintBoard(GameBoard);

@@ -10,9 +10,6 @@ namespace Minesweeper.Logic
     {
         public Stack<Field[,]> BoardStack { get; set; }
 
-       
-
-
         /// <summary>
         /// Represents the move history of the Minesweeper game.
         /// </summary>

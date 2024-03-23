@@ -95,6 +95,17 @@ namespace Minesweeper
                     {
                         this.Lose = true;
                         Guidance.PrintLose();
+
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("Do you want to undo the move? (Undo = U) ");
+                        Console.ResetColor();
+                        this.userInput = Console.ReadLine();
+                        this.userInput = this.userInput.ToUpper();
+                        if (userInput == "U")
+                        {
+                            this.ViewGame.SelectUserInput(userInput);
+                            return; 
+                        }
                         return;
                     }
                 }
@@ -106,6 +117,7 @@ namespace Minesweeper
                 Guidance.PrintWin();
             }
         }
+
 
         /// <summary>
         /// Manages user interaction during the game.
