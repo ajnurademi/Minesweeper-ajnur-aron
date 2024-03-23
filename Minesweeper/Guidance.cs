@@ -72,6 +72,8 @@ namespace Minesweeper
         /// </summary>
         public void PrintWin()
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(" __     __          __          __           _ \n");
             Console.Write(" \\ \\   / /          \\ \\        / /          | |\n");
             Console.Write("  \\ \\_/ /__  _   _   \\ \\  /\\  / /__  _ __   | |\n");
@@ -79,16 +81,23 @@ namespace Minesweeper
             Console.Write("    | | (_) | |_| |    \\  /\\  / (_) | | | | |_|\n");
             Console.Write("    |_|\\___/ \\__,_|     \\/  \\/ \\___/|_| |_| (_)\n");
             Console.Write("                                               \n");
+            Sound.PlayWinSound();
+            Console.ResetColor();
+            
         }
 
         public void PrintLose()
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("__     __           _               _   _ ");
             Console.WriteLine(" \\ \\   / /          | |             | | | |");
             Console.WriteLine("  \\ \\_/ /__  _   _  | |     ___  ___| |_| |");
             Console.WriteLine("   \\   / _ \\| | | | | |    / _ \\/ __| __| |");
             Console.WriteLine("    | | (_) | |_| | | |___| (_) \\__ \\ |_|_|");
             Console.WriteLine("    |_|\\___/ \\__,_| |______\\___/|___/\\__(_)");
+            Sound.PlayLoseSound();
+            Console.ResetColor();
         }
     }
 }

@@ -77,31 +77,35 @@ namespace Minesweeper
         /// </summary>
         public void EndGame()
         {
-            int CountMineFlagged = 0;
-            
+            int countMineFlagged = 0;
+
             for (int i = 0; i < gameBoard.Xsize; i++)
             {
                 for (int j = 0; j < gameBoard.Ysize; j++)
                 {
                     Field currentField = gameBoard.GameBoardArray[i, j];
-                   
+
                     if (currentField.IsMine && currentField.IsFlagged)
                     {
-                        CountMineFlagged++;
-                        break;
+                        countMineFlagged++;
+                    }
+
+                    if (currentField.IsMine && currentField.IsRevealed)
+                    {
+                        this.Lose = true;
+                        Guidance.PrintLose();
+                        return;
                     }
                 }
             }
 
-            if (this.Win && CountMineFlagged == gameBoard.MinesCount)
+            if (countMineFlagged == gameBoard.MinesCount)
             {
+                this.Win = true;
                 Guidance.PrintWin();
             }
-            else
-            {
-                Guidance.PrintLose(); 
-            }
         }
+
 
         /// <summary>
         /// Manages user interaction during the game.
@@ -181,6 +185,7 @@ namespace Minesweeper
 
                 this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
             }
+            EndGame();
             Console.Clear();
         }
     }
