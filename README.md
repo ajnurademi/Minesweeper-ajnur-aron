@@ -28,3 +28,15 @@ Die User Stories bieten einen detaillierten Einblick in die Funktionalitäten un
 ### Sequenzdiagramm:
 [Unser Sequenzdiagramm](https://github.com/ajnurademi/Minesweeper-ajnur-aron-sophia/blob/main/Sequenzdiagramm%20Minesweeper%20(ajnur%2C%20aron%20%26%20sophia).pdf)
 
+
+## Reflexion zum Lösungsprozess
+
+#### Wie haben wir das Lösen des Auftrags erlebt?
+Die Erfahrung bei der Bewältigung dieses Auftrags war durchwegs anspruchsvoll. Wir standen vor der Herausforderung, das Projekt von Grund auf neu aufzubauen, was sowohl Höhen als auch Tiefen mit sich brachte. Trotz der Schwierigkeiten war es eine lehrreiche Erfahrung, die uns ermöglichte, unsere Fähigkeiten zu erweitern und unsere Problemlösungsfähigkeiten zu verbessern.
+
+#### Inwieweit haben wir die vermittelten Methoden bei der Lösung des Auftrags geholfen? Wo haben sie mich behindert?
+Die vermittelten Methoden waren äußerst hilfreich, da sie uns eine klare Struktur boten, wie das Projekt zusammenhängt und funktionieren sollte. Insbesondere die agile Entwicklungstechniken aus dem Modul M426 erwiesen sich als wertvoll, um das Projekt effizient zu planen und umzusetzen. Durch die Anwendung dieser Methoden konnten wir den Entwicklungsprozess besser organisieren und potenzielle Probleme frühzeitig erkennen und beheben. Allerdings gab es auch Hindernisse. Ein Beispiel war die Implementierung der Undo-Funktion, bei der wir Schwierigkeiten hatten, das Spielbrett so zu speichern und wiederherzustellen, dass Benutzeraktionen rückgängig gemacht werden konnten. Auch die Implementierung der Reveal-Funktion stellte uns vor Herausforderungen, insbesondere bei der rekursiven Enthüllung einzelner Felder. Trotz dieser Herausforderungen konnten wir durch kreative Problemfindung und Zusammenarbeit Lösungen finden.
+
+#### Inwieweit haben wir die vermittelten Methoden bei der Lösung des Auftrags geholfen? Wo haben sie uns behindert? Was nehme wir aus dem Modul V320 für die Zukunft mit?
+Aus dem Modul V320 nehmen wir viele neue Erkenntnisse mit. Wir haben nicht nur neue Fähigkeiten erworben, sondern auch gelernt, theoretisches Wissen in die Praxis umzusetzen. Besonders wertvoll war die Erfahrung, wie man ein Projekt mithilfe der Kenntnisse aus dem Modul M426 Agile Entwicklung plant und durchführt und dieses mit den Kenntnissen aus dem Modul M320 verknüpft. Diese Erfahrung wird uns sicherlich in zukünftigen Projekten von Nutzen sein. Diese Erfahrungen werden uns zweifellos in zukünftigen Projekten von grossem Nutzen sein. Darüber hinaus haben wir gelernt, wie wichtig es ist, flexibel zu sein und sich schnell an neue Herausforderungen anzupassen. Diese Fähigkeit wird uns helfen, in einem sich ständig verändernden Arbeitsumfeld erfolgreich zu sein. 
+
