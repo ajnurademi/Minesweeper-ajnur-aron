@@ -45,7 +45,7 @@ namespace Minesweeper
             this.gameBoard.GenerateMines();
             this.gameBoard.PrintBoard(this.gameBoard);
 
-            while (this.Win == false && this.Lose == false)
+            while (true)
             {
                 if (this.gameBoard != null)
                 {
@@ -57,10 +57,6 @@ namespace Minesweeper
                 {
                     Console.WriteLine("Error creating Gameboard");
                 }
-            }
-            if (this.Win == true || this.Lose == true)
-            {
-                EndGame();
             }
         }
 
@@ -97,7 +93,7 @@ namespace Minesweeper
                         Guidance.PrintLose();
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Do you want to undo the move? (Undo = U) ");
+                        Console.WriteLine("Do you want to undo the move? (Undo = U)");
                         Console.ResetColor();
                         this.userInput = Console.ReadLine();
                         this.userInput = this.userInput.ToUpper();

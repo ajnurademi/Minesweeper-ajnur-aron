@@ -42,7 +42,6 @@ namespace Minesweeper
                     this.GameBoard.GameBoardArray = this.GameBoard.Undo();
 
                     GameBoard.PrintBoard(GameBoard);
-                    Console.WriteLine("You went back one step");
                 }
             }
             else
