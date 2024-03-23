@@ -35,6 +35,7 @@ namespace Minesweeper
             if (input == "F" || input == "RM" || input == "O" || input == "U" || input == "Q")
             {
                 this.userInput = input;
+                this.GameBoard.userInput = this.userInput;
 
                 if(this.userInput == "U")
                 {

@@ -10,6 +10,9 @@ namespace Minesweeper.Logic
     {
         public Stack<Field[,]> BoardStack { get; set; }
 
+       
+
+
         /// <summary>
         /// Represents the move history of the Minesweeper game.
         /// </summary>
@@ -22,7 +25,7 @@ namespace Minesweeper.Logic
         /// Saves the specified state of the game board to the move history.
         /// </summary>
         /// <param name="clone">The state of the game board to save.</param>
-        public void Push(Field[,] clone)
+        public void SaveState(Field[,] clone)
         {
             BoardStack.Push(clone);
         }
@@ -34,13 +37,14 @@ namespace Minesweeper.Logic
         {
             if (BoardStack.Count > 0)
             {
-                return BoardStack.Pop();
+                BoardStack.Pop();
+                Field[,] arrayMovebefore = BoardStack.Peek(); 
+                return arrayMovebefore;
             }
             else
             {
                 return null;
             }
         }
-
     }
 }

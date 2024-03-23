@@ -107,7 +107,6 @@ namespace Minesweeper
             }
         }
 
-
         /// <summary>
         /// Manages user interaction during the game.
         /// </summary>
@@ -126,7 +125,7 @@ namespace Minesweeper
                 }
                 if (this.userInput == "U")
                 {
-                    this.ViewGame.SelectUserInput(this.userInput);
+                    this.ViewGame.SelectUserInput(userInput);
                     break; 
                 }
                 if (userInput == "F" || userInput == "RM" || userInput == "O" || userInput == "U" || userInput == "Q")

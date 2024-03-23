@@ -15,16 +15,21 @@ namespace Minesweeper.Logic
         public int Ysize { get; set; }
         public int MinesCount { get; set; }
 
+        public string userInput { get; set; }
+
+        public PlayMoveHistory moveHistory { get; set; }
+
         public Board(IStrategyLevel strategy)
         {
             this.Xsize = strategy.Xsize;
             this.Ysize = strategy.Ysize;
             this.MinesCount = strategy.MinesCount;
+            this.moveHistory = new PlayMoveHistory();
 
             CreateBoard();
         }
 
-        public PlayMoveHistory moveHistory = new PlayMoveHistory();
+        
 
         /// <summary>
         /// Saves the current state of the game board to the move history.
@@ -32,7 +37,7 @@ namespace Minesweeper.Logic
         public void Save()
         {
             Field[,] clone = Clone();
-            moveHistory.Push(clone);    
+            this.moveHistory.SaveState(clone);    
         }
 
         /// <summary>
@@ -269,7 +274,13 @@ namespace Minesweeper.Logic
         /// <param name="board">The game board to be printed.</param>
         public void PrintBoard(Board board)
         {
-            Save();
+            Console.Clear();
+
+            if(this.userInput != "U")
+            {
+                Save();
+            }
+
             Thread.Sleep(750);
             Console.WriteLine();
             Console.Write("    ");
@@ -326,6 +337,9 @@ namespace Minesweeper.Logic
                 Console.WriteLine("  +" + new string('-', board.Xsize * 4));
             }
         }
+
+
+       
 
         /// <summary>
         /// Makes the Count of how many mines are around a Field colorful.
