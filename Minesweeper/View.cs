@@ -68,7 +68,6 @@ namespace Minesweeper
             }
         }
 
-
         /// <summary>
         /// Processes the user's choice for revealing, flagging, or removing flags on the game board based on the provided coordinates (X, Y).
         /// If the user's input is invalid, prompts the user to enter valid coordinates.
@@ -77,7 +76,6 @@ namespace Minesweeper
         /// <param name="y">The Y-coordinate of the user's choice.</param>
         private void processUserChoice(int x, int y)
         {
-
             if (this.userInput == "O" && GameBoard.GameBoardArray[x, y] != null)
             {
                 GameBoard.GameBoardArray[x, y].IsRevealed = true;
@@ -95,7 +93,6 @@ namespace Minesweeper
                 }
             }
             else if (this.userInput == "RM")
-
             {
                 if (GameBoard.GameBoardArray[x, y].IsFlagged)
                 {

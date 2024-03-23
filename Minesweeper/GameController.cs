@@ -114,7 +114,6 @@ namespace Minesweeper
             }
         }
 
-
         /// <summary>
         /// Manages user interaction during the game.
         /// </summary>
@@ -123,7 +122,7 @@ namespace Minesweeper
             while (true)
             {
                 Thread.Sleep(100);
-                Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
+                Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) | type {SG} if you want to see the Short Guidance");
                 this.userInput = Console.ReadLine();
                 this.userInput = this.userInput.ToUpper();
                 if (this.userInput == "R")
@@ -136,8 +135,18 @@ namespace Minesweeper
                     this.ViewGame.SelectUserInput(userInput);
                     break; 
                 }
-                if (userInput == "F" || userInput == "RM" || userInput == "O" || userInput == "U" || userInput == "Q")
+                if (this.userInput == "Q")
                 {
+                    Environment.Exit(0);
+                    break;
+                }
+                if (userInput == "F" || userInput == "RM" || userInput == "O" || userInput == "U" || userInput == "Q" || userInput == "SG")
+                {
+                    if (this.userInput == "SG")
+                    {
+                        this.Guidance.ShortGuidanceUserInteraction();
+                        continue;
+                    }
                     this.ViewGame.SelectUserInput(userInput);
                     break;
                 }

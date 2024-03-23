@@ -8,7 +8,6 @@ namespace Minesweeper
 {
     public class Guidance
     {
-        public string GuidanceContent { get; set; }
 
         /// <summary>
         /// Prints the game guidance including level selection, game mechanics, legend, and end options.
@@ -36,6 +35,21 @@ namespace Minesweeper
             Console.WriteLine("  - 'Q' Beende Minesweeper");
             Console.WriteLine("  - 'R' Reset Minesweeper");
             Console.WriteLine("-----------------------------------------------------------------------");
+        }
+
+        public void ShortGuidanceUserInteraction()
+        {
+            Console.WriteLine("-----------------------------------------------------------------------");
+            Console.WriteLine("Spielmechanik:");
+            Console.WriteLine(" - 'f' Flagge setzen");
+            Console.WriteLine(" - 'rm' Flagge entfernen");
+            Console.WriteLine(" - 'o' Feld aufdecken");
+            Console.WriteLine(" - 'u' Undo");
+            Console.WriteLine("-----------------------------------------------------------------------");
+            Console.WriteLine("Ende/Reset:");
+            Console.WriteLine("  - 'Q' Beende Minesweeper");
+            Console.WriteLine("  - 'R' Reset Minesweeper");
+            Console.WriteLine("-----------------------------------------------------------------------\n\n");
         }
 
         /// <summary>
