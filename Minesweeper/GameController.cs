@@ -16,6 +16,7 @@ namespace Minesweeper
         public View ViewGame { get; set; }
         private Board gameBoard { get; set; }
         public Sound Sound { get; set; }
+        private string userInput { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GameController class.
@@ -54,7 +55,7 @@ namespace Minesweeper
                 }
                 else
                 {
-                    Console.WriteLine("Error by creating Gameboard");
+                    Console.WriteLine("Error creating Gameboard");
                 }
             }
             if (this.Win == true || this.Lose == true)
@@ -102,7 +103,6 @@ namespace Minesweeper
             }
         }
 
-
         /// <summary>
         /// Manages user interaction during the game.
         /// </summary>
@@ -112,71 +112,76 @@ namespace Minesweeper
             {
                 Thread.Sleep(100);
                 Console.WriteLine("\n\nPlease insert what you want to do (f.E. o = open Field) ");
-                string userInput = Console.ReadLine();
-                userInput = userInput.ToUpper();
-                if(userInput == "F" || userInput == "RM" || userInput == "O" || userInput == "U" || userInput == "Q")
+                this.userInput = Console.ReadLine();
+                this.userInput = this.userInput.ToUpper();
+                if (this.userInput == "U")
+                {
+                    this.ViewGame.SelectUserInput(this.userInput);
+                    break; 
+                }
+                if (userInput == "F" || userInput == "RM" || userInput == "O" || userInput == "U" || userInput == "Q")
                 {
                     this.ViewGame.SelectUserInput(userInput);
                     break;
+
                 }
                 else
                 {
                     Console.WriteLine("This was a wrong input. Please have a look at the guidance.");
                 }
-
             }
-
-            int xCoordinateInt;
-            while (true)
+            if(this.userInput != "U")
             {
-                Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
-                xCoordinateInt = 0;
+                int xCoordinateInt;
                 while (true)
                 {
-                    string xCoordinate = Console.ReadLine();
-                    if (int.TryParse(xCoordinate, out xCoordinateInt))
+                    Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
+                    xCoordinateInt = 0;
+                    while (true)
                     {
+                        string xCoordinate = Console.ReadLine();
+                        if (int.TryParse(xCoordinate, out xCoordinateInt))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter a Number :)");
+                        }
+                    }
+
+                    if (xCoordinateInt <= gameBoard.Xsize)
+                    {
+
+                        xCoordinateInt = xCoordinateInt - 1;
                         break;
                     }
                     else
                     {
-                        Console.WriteLine("Please enter a Number :)");
+                        Console.WriteLine("This number is not shown on the board. Please enter another Coordinate.");
                     }
                 }
 
-                if (xCoordinateInt <= gameBoard.Xsize)
+                int yCoordinateInt;
+                while (true)
                 {
+                    Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
+                    string yCoordinate = Console.ReadLine();
+                    yCoordinateInt = int.Parse(yCoordinate);
+                    if (yCoordinateInt <= gameBoard.Ysize)
+                    {
+                        yCoordinateInt = yCoordinateInt - 1;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("This number is not shown on the board. Please enter another Coordinate.");
+                    }
+                }
 
-                    xCoordinateInt = xCoordinateInt - 1;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("This numbers is not shown on the board. Please enter another Coordinate.");
-                }
+                this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
             }
-
-            int yCoordinateInt;
-            while (true)
-            {
-                Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
-                string yCoordinate = Console.ReadLine();
-                yCoordinateInt = int.Parse(yCoordinate);
-                if (yCoordinateInt <= gameBoard.Ysize)
-                {
-                    yCoordinateInt = yCoordinateInt - 1;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("This numbers is not shown on the board. Please enter another Coordinate.");
-                }
-            }
-
-            this.ViewGame.SelectCoordinateXandY(xCoordinateInt, yCoordinateInt);
-
             Console.Clear();
-
         }
     }
 }

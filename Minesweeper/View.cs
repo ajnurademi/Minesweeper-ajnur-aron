@@ -14,8 +14,6 @@ namespace Minesweeper
         public StrategyLevelFactory StrategyLevelFactory { get; set; } = new StrategyLevelFactory();
         private string userInput { get; set; }
         public Board GameBoard { get; set; }
-
-        
         
         /// <summary>
         /// Sets the game difficulty based on the selected option and creates the game board accordingly.
@@ -37,6 +35,16 @@ namespace Minesweeper
             if (input == "F" || input == "RM" || input == "O" || input == "U" || input == "Q")
             {
                 this.userInput = input;
+
+                if(this.userInput == "U")
+                {
+
+                    this.GameBoard.GameBoardArray = this.GameBoard.Undo();
+
+                    GameBoard.PrintBoard(GameBoard);
+                    Console.WriteLine("You went back one step");
+                }
+                
             }
             else
             {
@@ -52,18 +60,16 @@ namespace Minesweeper
         /// 
         public void SelectCoordinateXandY(int x, int y)
         {
-            if (x != null || y != null)
+            if (x >= 0 && x < this.GameBoard.Xsize && y >= 0 && y < this.GameBoard.Ysize)
             {
-                if (x < this.GameBoard.Xsize || y < this.GameBoard.Ysize)
-                {
-                    processUserChoice(x, y);
-                }
+                processUserChoice(x, y);
             }
             else
             {
-                Console.Write("Selected coordinates are out of bounds. Please select valid coordinates.");
+                Console.WriteLine("Selected coordinates are out of bounds. Please select valid coordinates.");
             }
         }
+
 
         /// <summary>
         /// Processes the user's choice for revealing, flagging, or removing flags on the game board based on the provided coordinates (X, Y).
@@ -101,10 +107,6 @@ namespace Minesweeper
                 {
                     Console.WriteLine($"No flag to remove at ({x + 1}, {y + 1})");
                 }
-            }
-            else if (this.userInput == "u")
-            {
-                Console.WriteLine("not implemented");   
             }
             else
             {

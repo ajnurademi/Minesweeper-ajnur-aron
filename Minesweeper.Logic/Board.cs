@@ -32,9 +32,10 @@ namespace Minesweeper.Logic
             moveHistory.Push(clone);    
         }
 
-        public void Undo()
+        public Field[,] Undo()
         {
-            this.GameBoardArray = moveHistory.Pop();
+            return moveHistory.Pop();
+
         }
 
         // State
@@ -46,7 +47,7 @@ namespace Minesweeper.Logic
             {
                 for (int j = 0; j < Ysize; j++)
                 {
-                    GameBoardArray[i, j] = new Field
+                    clone[i, j] = new Field
                     {
                         PosX = i,
                         PosY = j,
@@ -123,6 +124,7 @@ namespace Minesweeper.Logic
                 {
                     Reveal(posX + 1, posY + 1);
                 }
+
             }
         }
 
@@ -258,6 +260,7 @@ namespace Minesweeper.Logic
         /// <param name="board">The game board to be printed.</param>
         public void PrintBoard(Board board)
         {
+            Save();
             Thread.Sleep(750);
             Console.WriteLine();
             Console.Write("    ");

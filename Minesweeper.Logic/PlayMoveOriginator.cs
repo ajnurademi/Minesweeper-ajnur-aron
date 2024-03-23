@@ -10,8 +10,6 @@ namespace Minesweeper.Logic
     {
         public Field[,] CopieArray { get; set; }
 
-        
-
         public void RestoreState(Board state)
         {
             CopieArray = state.GameBoardArray;
