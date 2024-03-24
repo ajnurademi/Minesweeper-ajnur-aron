@@ -5,20 +5,8 @@ namespace Minesweeper
 {
     public class Sound
     {
-        public bool BackgroundMusicOn { get; set; } = true;
-        public bool SoundEffectsOn { get; set; }
-
         /// <summary>
-        /// Spielt den Hintergrundsound ab.
-        /// </summary>
-        public static void PlayBackgroundSound()
-        {
-            SoundPlayer sound = new SoundPlayer("background_sound.wav");
-            sound.PlayLooping(); 
-        }
-
-        /// <summary>
-        /// Spielt den Sieges-Sound ab.
+        /// Plays the Win Sound
         /// </summary>
         public static void PlayWinSound()
         {
@@ -27,7 +15,7 @@ namespace Minesweeper
         }
 
         /// <summary>
-        /// Spielt den Verlierer-Sound ab.
+        /// Plays the Lose Sound 
         /// </summary>
         public static void PlayLoseSound()
         {

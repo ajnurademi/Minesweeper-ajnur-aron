@@ -160,7 +160,7 @@ namespace Minesweeper
                 int xCoordinateInt;
                 while (true)
                 {
-                    Console.Write("\nBitte geben Sie die X-Koordinate ein: ");
+                    Console.Write("\nPlease enter the X coordinate: ");
                     xCoordinateInt = 0;
                     while (true)
                     {
@@ -190,7 +190,7 @@ namespace Minesweeper
                 int yCoordinateInt;
                 while (true)
                 {
-                    Console.Write("\nBitte geben Sie die Y-Koordinate ein: ");
+                    Console.Write("\nPlease enter the Y coordinate: ");
                     string yCoordinate = Console.ReadLine();
                     yCoordinateInt = int.Parse(yCoordinate);
                     if (yCoordinateInt <= gameBoard.Ysize)

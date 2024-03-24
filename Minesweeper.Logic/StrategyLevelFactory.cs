@@ -23,7 +23,6 @@ namespace Minesweeper.Logic
         {
             if (opt != null)
             { 
-
                 if (opt == "E")
                 {
                     IStrategyLevel levelE = new LevelEasy();
@@ -41,13 +40,11 @@ namespace Minesweeper.Logic
                     IStrategyLevel levelD = new LevelDifficult();
                     return levelD;
                 }
-               
             }
 
-            Console.WriteLine("Using default Option (Easy)");
+            Console.WriteLine("Using default Option (Easy)\n");
             IStrategyLevel defaulStrategy = new LevelEasy();
             return defaulStrategy;
         }
-
     }
 }

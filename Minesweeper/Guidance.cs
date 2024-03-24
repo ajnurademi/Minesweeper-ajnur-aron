@@ -37,6 +37,9 @@ namespace Minesweeper
             Console.WriteLine("-----------------------------------------------------------------------");
         }
 
+        /// <summary>
+        /// Provides short guidance for user interactions in a Minesweeper game.
+        /// </summary>
         public void ShortGuidanceUserInteraction()
         {
             Console.WriteLine("-----------------------------------------------------------------------");

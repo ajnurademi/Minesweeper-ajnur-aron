@@ -14,11 +14,13 @@ namespace Minesweeper.Logic
         public int Xsize { get; set; }
         public int Ysize { get; set; }
         public int MinesCount { get; set; }
-
         public string userInput { get; set; }
-
         public PlayMoveHistory moveHistory { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Board class using the provided game strategy.
+        /// </summary>
+        /// <param name="strategy"></param>
         public Board(IStrategyLevel strategy)
         {
             this.Xsize = strategy.Xsize;
@@ -35,7 +37,7 @@ namespace Minesweeper.Logic
         public void Save()
         {
             Field[,] clone = Clone();
-            this.moveHistory.SaveState(clone);    
+            this.moveHistory.SaveState(clone);
         }
 
         /// <summary>
@@ -62,9 +64,9 @@ namespace Minesweeper.Logic
                     {
                         PosX = i,
                         PosY = j,
-                        CountMinesAround = GameBoardArray[i,j].CountMinesAround,
-                        IsRevealed = GameBoardArray[i,j].IsRevealed,
-                        IsMine = GameBoardArray[i,j].IsMine,
+                        CountMinesAround = GameBoardArray[i, j].CountMinesAround,
+                        IsRevealed = GameBoardArray[i, j].IsRevealed,
+                        IsMine = GameBoardArray[i, j].IsMine,
                         IsFlagged = GameBoardArray[i, j].IsFlagged
                     };
                 }
@@ -83,7 +85,7 @@ namespace Minesweeper.Logic
         {
             GameBoardArray[posX, posY].IsRevealed = true;
 
-            if(GameBoardArray[posX, posY].CountMinesAround == 0)
+            if (GameBoardArray[posX, posY].CountMinesAround == 0)
             {
                 // bottom
                 if (posY < Ysize - 1 && !GameBoardArray[posX, posY + 1].IsRevealed)
@@ -104,7 +106,7 @@ namespace Minesweeper.Logic
                 }
 
                 // right
-                if(posX < Xsize -1 && !GameBoardArray[posX + 1, posY].IsRevealed)
+                if (posX < Xsize - 1 && !GameBoardArray[posX + 1, posY].IsRevealed)
                 {
                     Reveal(posX + 1, posY);
                 }
@@ -147,27 +149,28 @@ namespace Minesweeper.Logic
             GameBoardArray[posX, posY].CountMinesAround = 0;
             int Count = GameBoardArray[posX, posY].CountMinesAround;
 
-            if(posY < Ysize -1)
+            if (posY < Ysize - 1)
             {
                 if (GameBoardArray[posX, posY + 1].IsMine) // top
                 {
                     Count++;
                 }
             }
-                
-            if(posX < Xsize -1)
+
+            if (posX < Xsize - 1)
             {
                 if (GameBoardArray[posX + 1, posY].IsMine) //right
                 {
                     Count++;
                 }
-                if(posY < Ysize -1) {
+                if (posY < Ysize - 1)
+                {
                     if (GameBoardArray[posX + 1, posY + 1].IsMine) // bottom right
                     {
                         Count++;
                     }
                 }
-                if(posY > 0)
+                if (posY > 0)
                 {
                     if (GameBoardArray[posX + 1, posY - 1].IsMine) //top right
                     {
@@ -175,8 +178,8 @@ namespace Minesweeper.Logic
                     }
                 }
             }
-                
-            if(posY > 0)
+
+            if (posY > 0)
             {
 
                 if (GameBoardArray[posX, posY - 1].IsMine) //top
@@ -187,26 +190,26 @@ namespace Minesweeper.Logic
 
             if (posX > 0)
             {
-                    if (GameBoardArray[posX - 1, posY].IsMine) //left
+                if (GameBoardArray[posX - 1, posY].IsMine) //left
+                {
+                    Count++;
+                }
+                if (posY < Ysize - 1)
+                {
+                    if (GameBoardArray[posX - 1, posY + 1].IsMine) //bottom left
                     {
                         Count++;
                     }
-                    if(posY < Ysize - 1)
+                }
+                if (posY > 0)
+                {
+                    if (GameBoardArray[posX - 1, posY - 1].IsMine) //top left
                     {
-                        if (GameBoardArray[posX - 1, posY + 1].IsMine) //bottom left
-                        {
-                            Count++;
-                        }
+                        Count++;
                     }
-                    if(posY > 0)
-                    {
-                        if (GameBoardArray[posX - 1, posY - 1].IsMine) //top left
-                        {
-                            Count++;
-                        }
-                    }
-                    
-                
+                }
+
+
             }
             return Count;
         }
@@ -255,9 +258,9 @@ namespace Minesweeper.Logic
             }
             for (int i = 0; i < Xsize; i++)
             {
-                for (int j = 0; j < Ysize; j++) 
+                for (int j = 0; j < Ysize; j++)
                 {
-                    this.GameBoardArray[i, j].CountMinesAround = CalcMinesAroundMe(i, j);  
+                    this.GameBoardArray[i, j].CountMinesAround = CalcMinesAroundMe(i, j);
                 }
             }
         }
@@ -270,7 +273,7 @@ namespace Minesweeper.Logic
         {
             Console.Clear();
 
-            if(this.userInput != "U")
+            if (this.userInput != "U")
             {
                 Save();
             }
