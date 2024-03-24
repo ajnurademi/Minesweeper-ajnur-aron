@@ -38,12 +38,14 @@ namespace Minesweeper.Test
             //Act
             boardtest.Save();
             boardtest.Save();
+            boardtest.Save();
+            boardtest.Save();
             boardtest.Undo();
 
 
             //Assert
             Assert.IsNotNull(boardtest.moveHistory.BoardStack);
-            Assert.AreEqual(1, boardtest.moveHistory.BoardStack.Count);
+            Assert.AreEqual(3, boardtest.moveHistory.BoardStack.Count);
 
         }
     }

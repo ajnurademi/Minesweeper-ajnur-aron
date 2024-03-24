@@ -24,5 +24,44 @@ namespace Minesweeper.Test
             // Assert
             Assert.IsInstanceOfType(strategy, typeof(LevelEasy));
         }
+
+        [TestMethod]
+        public void StrategyLevelInput_LevelMedium_ReturnsLevelMedium()
+        {
+            // Arrange
+            var factory = new StrategyLevelFactory();
+
+            // Act
+            var strategy = factory.StrategyLevelInput("M");
+
+            // Assert
+            Assert.IsInstanceOfType(strategy, typeof(LevelMedium));
+        }
+
+        [TestMethod]
+        public void StrategyLevelInput_LevelDifficult_ReturnsLevelDifficult()
+        {
+            // Arrange
+            var factory = new StrategyLevelFactory();
+
+            // Act
+            var strategy = factory.StrategyLevelInput("D");
+
+            // Assert
+            Assert.IsInstanceOfType(strategy, typeof(LevelDifficult));
+        }
+
+        [TestMethod]
+        public void StrategyLevelInput_wrongInput_ReturnsDefaultLevelEasy()
+        {
+            // Arrange
+            var factory = new StrategyLevelFactory();
+
+            // Act
+            var strategy = factory.StrategyLevelInput("dasdgdfhsdh");
+
+            // Assert
+            Assert.IsInstanceOfType(strategy, typeof(LevelEasy));
+        }
     }
 }

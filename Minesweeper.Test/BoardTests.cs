@@ -29,6 +29,51 @@ namespace Minesweeper.Test
             Assert.AreEqual(board.MinesCount, mineCount);
         }
 
+
+        [TestMethod]
+        public void GenerateMines_LevelDifficult()
+        {
+            // Arrange
+            IStrategyLevel strategy = new LevelDifficult();
+            Board board = new Board(strategy);
+
+            // Act
+            board.GenerateMines();
+
+            // Assert
+            int mineCount = 0;
+            foreach (Field field in board.GameBoardArray)
+            {
+                if (field.IsMine)
+                {
+                    mineCount++;
+                }
+            }
+            Assert.AreEqual(board.MinesCount, mineCount);
+        }
+
+        [TestMethod]
+        public void GenerateMines_LevelMedium()
+        {
+            // Arrange
+            IStrategyLevel strategy = new LevelMedium();
+            Board board = new Board(strategy);
+
+            // Act
+            board.GenerateMines();
+
+            // Assert
+            int mineCount = 0;
+            foreach (Field field in board.GameBoardArray)
+            {
+                if (field.IsMine)
+                {
+                    mineCount++;
+                }
+            }
+            Assert.AreEqual(board.MinesCount, mineCount);
+        }
+
         [TestMethod]
         public void CalcMinesAroundMe_CorrectMineCount()
         {
