@@ -55,7 +55,6 @@ namespace Minesweeper
         /// </summary>
         /// <param name="y">The Y-coordinate provided by the user.</param>
         /// <param name="x">The X-coordinate provided by the user.</param>
-        /// 
         public void SelectCoordinateXandY(int x, int y)
         {
             if (x >= 0 && x < this.GameBoard.Xsize && y >= 0 && y < this.GameBoard.Ysize)

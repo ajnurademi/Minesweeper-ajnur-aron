@@ -134,7 +134,6 @@ namespace Minesweeper.Logic
                 {
                     Reveal(posX + 1, posY + 1);
                 }
-
             }
         }
 
@@ -144,7 +143,7 @@ namespace Minesweeper.Logic
         /// <param name="posX">The X-coordinate of the cell.</param>
         /// <param name="posY">The Y-coordinate of the cell.</param>
         /// <returns>The count of mines surrounding the specified cell.</returns>
-        private int CalcMinesAroundMe(int posX, int posY)
+        public int CalcMinesAroundMe(int posX, int posY)
         {
             GameBoardArray[posX, posY].CountMinesAround = 0;
             int Count = GameBoardArray[posX, posY].CountMinesAround;
@@ -208,8 +207,6 @@ namespace Minesweeper.Logic
                         Count++;
                     }
                 }
-
-
             }
             return Count;
         }
@@ -288,8 +285,6 @@ namespace Minesweeper.Logic
             Console.WriteLine();
             Console.WriteLine("  +" + new string('-', board.Xsize * 4));
 
-
-
             for (int j = 0; j < board.Ysize; j++)
             {
                 Console.Write(String.Format("{0:00} |", j + 1));
@@ -318,14 +313,7 @@ namespace Minesweeper.Logic
                         }
                         else
                         {
-                            if (board.GameBoardArray[i, j].IsMine)
-                            {
-                                Console.Write("o");
-                            }
-                            else
-                            {
-                                Console.Write("■");
-                            }
+                            Console.Write("■");
                         }
                     }
                     Console.Write(" |");

@@ -101,7 +101,7 @@ namespace Minesweeper
             Console.Write("                                               \n");
             Sound.PlayWinSound();
             Console.ResetColor();
-            
+            Environment.Exit(0);
         }
 
         /// <summary>
@@ -121,7 +121,6 @@ namespace Minesweeper
             Console.WriteLine("Wait until the sound has finished playing!!!");
             Sound.PlayLoseSound();
             Console.ResetColor();
-            
         }
     }
 }
