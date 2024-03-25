@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,8 @@ namespace Minesweeper.Logic
     public class PlayMoveHistory
     {
         public Stack<Field[,]> BoardStack { get; set; }
+
+        public bool lose { get; set; }
 
         /// <summary>
         /// Represents the move history of the Minesweeper game.
@@ -34,6 +37,10 @@ namespace Minesweeper.Logic
         {
             if (BoardStack.Count > 0)
             {
+                if (lose)
+                {
+                   return BoardStack.Pop();
+                }
                 BoardStack.Pop();
                 Field[,] arrayMovebefore = BoardStack.Peek(); 
                 return arrayMovebefore;

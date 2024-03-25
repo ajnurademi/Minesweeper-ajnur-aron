@@ -90,9 +90,9 @@ namespace Minesweeper
                     if (currentField.IsMine && currentField.IsRevealed)
                     {
                         this.Lose = true;
-                        gameBoard.Save();
+                        gameBoard.moveHistory.lose = this.Lose;
                         Guidance.PrintLose();
-
+                        
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Do you want to undo the move? (Undo = U)");
                         Console.ResetColor();
@@ -101,6 +101,8 @@ namespace Minesweeper
                         if (userInput == "U")
                         {
                             this.ViewGame.SelectUserInput(userInput);
+                            this.Lose = false;
+                            gameBoard.moveHistory.lose = this.Lose;
                             return; 
                         }
                         return;
