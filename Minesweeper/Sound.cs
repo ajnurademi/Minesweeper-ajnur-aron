@@ -10,7 +10,7 @@ namespace Minesweeper
         /// </summary>
         public static void PlayWinSound()
         {
-            SoundPlayer sound = new SoundPlayer("win_sound.wav");
+            SoundPlayer sound = new SoundPlayer("../../../Sounds/win_sound.wav");
             sound.PlaySync();
         }
 
@@ -19,7 +19,7 @@ namespace Minesweeper
         /// </summary>
         public static void PlayLoseSound()
         {
-            SoundPlayer sound = new SoundPlayer("gameover_sound.wav");
+            SoundPlayer sound = new SoundPlayer("../../../Sounds/gameover_sound.wav");
             sound.PlaySync();
         }
     }
