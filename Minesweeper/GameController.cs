@@ -90,6 +90,7 @@ namespace Minesweeper
                     if (currentField.IsMine && currentField.IsRevealed)
                     {
                         this.Lose = true;
+                        gameBoard.Save();
                         Guidance.PrintLose();
 
                         Console.ForegroundColor = ConsoleColor.Yellow;
