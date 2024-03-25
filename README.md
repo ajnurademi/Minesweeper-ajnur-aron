@@ -28,6 +28,21 @@ Die User Stories bieten einen detaillierten Einblick in die Funktionalitäten un
 ### ↪️ Sequenzdiagramm:
 [Sequenzdiagramm](https://github.com/ajnurademi/Minesweeper-ajnur-aron-sophia/blob/main/Sequenzdiagramm%20Minesweeper%20(ajnur%2C%20aron%20%26%20sophia).pdf)
 
+## 🔬 Unittest für Minesweeper x300 Logik
+
+Die Tests für die Minesweeper x300 Logik wurden sorgfältig mit `unittest` durchgeführt. Diese Tests stellen sicher, dass während der Implementierung des Fortschritts alles reibungslos funktioniert.
+
+#### Umfassende Testabdeckung
+
+Die Tests wurden entworfen, um alle Aspekte der Minesweeper x300 Logik abzudecken. Von der Platzierung von Minen bis zur korrekten Berechnung benachbarter Minenfelder wurde jeder Teil gründlich überprüft.
+
+#### Früherkennung von Fehlern
+
+Durch die umfassende Testabdeckung können potenzielle Fehler frühzeitig erkannt werden. Dies ermöglicht es dem Entwicklerteam, Probleme zu identifizieren und zu beheben, bevor sie sich auf die Gesamtfunktionalität auswirken.
+
+#### Verbesserung der Codequalität
+
+Die Tests tragen dazu bei, die Stabilität und Qualität des Codes zu verbessern. Indem sie sicherstellen, dass jede Funktion ordnungsgemäss funktioniert, fördern sie eine zuverlässige und konsistente Leistung des Minesweeper x300 Programms.
 
 ## 💭 Reflexion zum Lösungsprozess
 
@@ -39,5 +54,3 @@ Die vermittelten Methoden waren äusserst hilfreich, da sie uns eine klare Struk
 
 ### 🎓 Was nehmen wir aus dem Modul V320 für die Zukunft mit?
 Aus dem Modul V320 nehmen wir viele neue Erkenntnisse mit. Wir haben nicht nur neue Fähigkeiten erworben, sondern auch gelernt, theoretisches Wissen in die Praxis umzusetzen. Besonders wertvoll war die Erfahrung, wie man ein Projekt mithilfe der Kenntnisse aus dem Modul M426 Agile Entwicklung plant und durchführt und dieses mit den Kenntnissen aus dem Modul M320 verknüpft. Diese Erfahrungen werden uns zweifellos in zukünftigen Projekten von grossem Nutzen sein. Darüber hinaus haben wir gelernt, wie wichtig es ist, flexibel zu sein und sich schnell an neue Herausforderungen anzupassen. Diese Fähigkeit wird uns helfen, in einem sich ständig verändernden Arbeitsumfeld erfolgreich zu sein.
-
-
